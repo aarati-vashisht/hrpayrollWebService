@@ -45,6 +45,39 @@ public class Controller {
                 Integer.valueOf(loginBody.get("StateID")));
 
     }
+    @PostMapping(value="/insertCountryData")
+    public HashMap<String, String> insertCountryData(@RequestBody HashMap<String,String> loginBody)
+    {
+        return  hrPayRollService.insertCountryData(Integer.valueOf(loginBody.get("CountryID")),
+                loginBody.get("CountryName"),
+                loginBody.get("CountryCode"),
+                loginBody.get("CreatedBy"),
+                loginBody.get("UpdatedBy"),
+                loginBody.get("QueryType"));
+    }
 
+    @PostMapping(value="/updateCountryData")
+    public HashMap<String, String> updateCountryData(@RequestBody HashMap<String,String> loginBody)
+    {
+        return  hrPayRollService.updateCountryData(Integer.valueOf(loginBody.get("CountryID")),
+                loginBody.get("CountryName"),
+                loginBody.get("CountryCode"),
+                loginBody.get("CreatedBy"),
+                loginBody.get("UpdatedBy"),
+                loginBody.get("QueryType")
+        );
+    }
+
+    @PostMapping(value="/deleteCountryData")
+    public HashMap<String, String> deleteCountryData(@RequestBody HashMap<String,String> loginBody)
+    {
+        return  hrPayRollService.updateCountryData(Integer.valueOf(loginBody.get("CountryID")),
+                loginBody.get("CountryName"),
+                loginBody.get("CountryCode"),
+                loginBody.get("CreatedBy"),
+                loginBody.get("UpdatedBy"),
+                loginBody.get("QueryType")
+        );
+    }
 
 }
