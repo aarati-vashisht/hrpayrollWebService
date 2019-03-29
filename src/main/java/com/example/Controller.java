@@ -48,35 +48,39 @@ public class Controller {
     @PostMapping(value="/insertCountryData")
     public HashMap<String, String> insertCountryData(@RequestBody HashMap<String,String> loginBody)
     {
-        return  hrPayRollService.insertCountryData(Integer.valueOf(loginBody.get("CountryID")),
+        return  hrPayRollService.insertCountryData( loginBody.get("QueryType"),
+                Integer.valueOf(loginBody.get("CountryID")),
                 loginBody.get("CountryName"),
                 loginBody.get("CountryCode"),
                 loginBody.get("CreatedBy"),
-                loginBody.get("UpdatedBy"),
-                loginBody.get("QueryType"));
+                loginBody.get("UpdatedBy")
+
+        );
     }
 
     @PostMapping(value="/updateCountryData")
     public HashMap<String, String> updateCountryData(@RequestBody HashMap<String,String> loginBody)
     {
-        return  hrPayRollService.updateCountryData(Integer.valueOf(loginBody.get("CountryID")),
+        return  hrPayRollService.updateCountryData( loginBody.get("QueryType"),
+                Integer.valueOf(loginBody.get("CountryID")),
                 loginBody.get("CountryName"),
                 loginBody.get("CountryCode"),
                 loginBody.get("CreatedBy"),
-                loginBody.get("UpdatedBy"),
-                loginBody.get("QueryType")
+                loginBody.get("UpdatedBy")
+
         );
     }
 
     @PostMapping(value="/deleteCountryData")
     public HashMap<String, String> deleteCountryData(@RequestBody HashMap<String,String> loginBody)
     {
-        return  hrPayRollService.updateCountryData(Integer.valueOf(loginBody.get("CountryID")),
+        return  hrPayRollService.updateCountryData( loginBody.get("QueryType"),
+                Integer.valueOf(loginBody.get("CountryID")),
                 loginBody.get("CountryName"),
                 loginBody.get("CountryCode"),
                 loginBody.get("CreatedBy"),
-                loginBody.get("UpdatedBy"),
-                loginBody.get("QueryType")
+                loginBody.get("UpdatedBy")
+
         );
         ////Commit BY Lalit
     }
