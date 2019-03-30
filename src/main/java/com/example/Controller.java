@@ -2,16 +2,19 @@ package com.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.util.HashMap;
-
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class Controller {
     @Autowired
     HrPayRollService hrPayRollService;
+
 
     //State Table//
     @PostMapping(value = "/AddState", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -118,6 +121,30 @@ public class Controller {
         ///hgcfghgh
         ////Commit BY Lalit
     }
+
+    @PostMapping(value = "/SaveEmployee", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HashMap<String, String> SaveEmployee(@RequestBody HashMap<String, String> saveBody) throws ParseException {
+        return hrPayRollService.SaveEmployee(saveBody.get("StateName"),
+                Integer.valueOf(saveBody.get("E_Code")),
+                saveBody.get("E_FristName"),
+                saveBody.get("E_MiddleName"),
+                saveBody.get("E_LastName"),
+                Integer.valueOf(saveBody.get("E_Designaton")),
+                saveBody.get("E_Gender"),
+                saveBody.get("E_Title"),
+                saveBody.get("E_DOB"),
+                saveBody.get("E_Dept"),
+                saveBody.get("E_MaritalStatus"),
+                saveBody.get("Anniversary"),
+                saveBody.get("E_Image"),
+                saveBody.get("E_EmployementType"),
+                saveBody.get("CreatedBy"),
+                saveBody.get("UpdatedBy"));
+
+    }
+    ///Save Employee data////
+
+
 
     @PostMapping(value="/AddLocation")
     public HashMap<String, String> AddLocation(@RequestBody HashMap<String,String> loginBody)
