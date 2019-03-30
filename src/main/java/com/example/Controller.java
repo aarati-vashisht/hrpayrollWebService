@@ -76,6 +76,8 @@ public class Controller {
                 upadteCityBody.get("UpdatedBy"),
                 Integer.valueOf(upadteCityBody.get("StateID")),
                 Integer.valueOf(upadteCityBody.get("StateID")));
+
+    }
     @PostMapping(value="/insertCountryData")
     public HashMap<String, String> insertCountryData(@RequestBody HashMap<String,String> loginBody)
     {
@@ -116,7 +118,4 @@ public class Controller {
         ////Commit BY Lalit
     }
 
-    }
-//////new commit
-///comitted by ankit
 }
