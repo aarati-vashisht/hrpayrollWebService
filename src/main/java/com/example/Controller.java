@@ -14,14 +14,14 @@ public class Controller {
     HrPayRollService hrPayRollService;
 
     //State Table//
-    @PostMapping(value = "/InsertState", produces = MediaType.APPLICATION_JSON_VALUE)
-    public HashMap<String, String> Insert(@RequestBody HashMap<String, String> insertBody)  {
-        return hrPayRollService.InsertState(insertBody.get("QueryType"),
+    @PostMapping(value = "/AddState", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HashMap<String, String> AddState(@RequestBody HashMap<String, String> insertBody)  {
+        return hrPayRollService.AddState(insertBody.get("QueryType"),
                 insertBody.get("StateName"),
                 insertBody.get("CreatedBy"),
                 insertBody.get("UpdatedBy"),
                 Integer.valueOf(insertBody.get("CountryID")),
-                Integer.valueOf(insertBody.get("StateID")));
+                insertBody.get("StateID"));
 
     }
 
@@ -48,14 +48,14 @@ public class Controller {
     }
 
 // City Table//
-    @PostMapping(value = "/InsertCity", produces = MediaType.APPLICATION_JSON_VALUE)
-    public HashMap<String, String> InsertCity(@RequestBody HashMap<String, String> insertCityBody)  {
-        return hrPayRollService.InsertCity(insertCityBody.get("QueryType"),
+    @PostMapping(value = "/AddCity", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HashMap<String, String> AddCity(@RequestBody HashMap<String, String> insertCityBody)  {
+        return hrPayRollService.AddCity(insertCityBody.get("QueryType"),
                 insertCityBody.get("CityName"),
                 insertCityBody.get("CreatedBy"),
                 insertCityBody.get("UpdatedBy"),
                 Integer.valueOf(insertCityBody.get("StateID")),
-                Integer.valueOf(insertCityBody.get("CityID")));
+                insertCityBody.get("CityID"));
 
     }
     @PostMapping(value = "/UpdateCity", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -78,10 +78,23 @@ public class Controller {
                 Integer.valueOf(upadteCityBody.get("StateID")));
 
     }
-    @PostMapping(value="/insertCountryData")
-    public HashMap<String, String> insertCountryData(@RequestBody HashMap<String,String> loginBody)
+    @PostMapping(value="/AddCountry")
+    public HashMap<String, String> AddCountry(@RequestBody HashMap<String,String> loginBody)
     {
-        return  hrPayRollService.insertCountryData( loginBody.get("QueryType"),
+        return  hrPayRollService.AddCountry( loginBody.get("QueryType"),
+                loginBody.get("CountryID"),
+                loginBody.get("CountryName"),
+                loginBody.get("CountryCode"),
+                loginBody.get("CreatedBy"),
+                loginBody.get("UpdatedBy")
+
+        );
+    }
+
+    @PostMapping(value="/UpdateCountry")
+    public HashMap<String, String> UpdateCountry(@RequestBody HashMap<String,String> loginBody)
+    {
+        return  hrPayRollService.UpdateCountry( loginBody.get("QueryType"),
                 Integer.valueOf(loginBody.get("CountryID")),
                 loginBody.get("CountryName"),
                 loginBody.get("CountryCode"),
@@ -91,23 +104,10 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/updateCountryData")
-    public HashMap<String, String> updateCountryData(@RequestBody HashMap<String,String> loginBody)
+    @PostMapping(value="/DeleteCountry")
+    public HashMap<String, String> DeleteCountry(@RequestBody HashMap<String,String> loginBody)
     {
-        return  hrPayRollService.updateCountryData( loginBody.get("QueryType"),
-                Integer.valueOf(loginBody.get("CountryID")),
-                loginBody.get("CountryName"),
-                loginBody.get("CountryCode"),
-                loginBody.get("CreatedBy"),
-                loginBody.get("UpdatedBy")
-
-        );
-    }
-
-    @PostMapping(value="/deleteCountryData")
-    public HashMap<String, String> deleteCountryData(@RequestBody HashMap<String,String> loginBody)
-    {
-        return  hrPayRollService.updateCountryData( loginBody.get("QueryType"),
+        return  hrPayRollService.DeleteCountry( loginBody.get("QueryType"),
                 Integer.valueOf(loginBody.get("CountryID")),
                 loginBody.get("CountryName"),
                 loginBody.get("CountryCode"),
