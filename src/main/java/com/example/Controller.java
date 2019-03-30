@@ -122,9 +122,9 @@ public class Controller {
         ////Commit BY Lalit
     }
 
-    @PostMapping(value = "/SaveEmployee", produces = MediaType.APPLICATION_JSON_VALUE)
-    public HashMap<String, String> SaveEmployee(@RequestBody HashMap<String, String> saveBody) throws ParseException {
-        return hrPayRollService.SaveEmployee(saveBody.get("StateName"),
+    @PostMapping(value = "/AddEmployee", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HashMap<String, String> AddEmployee(@RequestBody HashMap<String, String> saveBody) throws ParseException {
+        return hrPayRollService.AddEmployee(saveBody.get("StateName"),
                 Integer.valueOf(saveBody.get("E_Code")),
                 saveBody.get("E_FristName"),
                 saveBody.get("E_MiddleName"),
@@ -182,5 +182,46 @@ public class Controller {
 
         );
 
+    }
+
+    @PostMapping(value="/AddDepartment")
+    public HashMap<String, String> AddDepartment(@RequestBody HashMap<String,String> loginBody)
+    {
+        return  hrPayRollService.AddDepartment( loginBody.get("QueryType"),
+                loginBody.get("DepartmentID"),
+                Integer.valueOf(loginBody.get("LocationID")),
+                loginBody.get("DepartmentName"),
+                loginBody.get("DepartmentCode"),
+                loginBody.get("Description")
+
+        );
+    }
+
+    @PostMapping(value="/UpdateDepartment")
+    public HashMap<String, String> UpdateDepartment(@RequestBody HashMap<String,String> loginBody)
+    {
+        return  hrPayRollService.UpdateDepartment( loginBody.get("QueryType"),
+                Integer.valueOf(loginBody.get("DepartmentID")),
+                Integer.valueOf(loginBody.get("LocationID")),
+                loginBody.get("DepartmentName"),
+                loginBody.get("DepartmentCode"),
+                loginBody.get("Description")
+
+        );
+    }
+
+    @PostMapping(value="/DeleteDepartment")
+    public HashMap<String, String> DeleteDepartment(@RequestBody HashMap<String,String> loginBody)
+    {
+        return  hrPayRollService.DeleteDepartment( loginBody.get("QueryType"),
+                Integer.valueOf(loginBody.get("DepartmentID")),
+                Integer.valueOf(loginBody.get("LocationID")),
+                loginBody.get("DepartmentName"),
+                loginBody.get("DepartmentCode"),
+                loginBody.get("Description")
+
+        );
+        ///hgcfghgh
+        ////Commit BY Lalit
     }
 }
