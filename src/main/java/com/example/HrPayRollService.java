@@ -243,6 +243,6 @@ public class HrPayRollService {
         }
         map.put("Status","Failure");
         return map;
-
+//Commit set default values QueryType and CountryID,StateID,CityID and set systematic method name
     }
 }
