@@ -119,4 +119,41 @@ public class Controller {
         ////Commit BY Lalit
     }
 
+    @PostMapping(value="/AddLocation")
+    public HashMap<String, String> AddLocation(@RequestBody HashMap<String,String> loginBody)
+    {
+        return  hrPayRollService.AddLocation( loginBody.get("QueryType"),
+                loginBody.get("LocationID"),
+                loginBody.get("LocationName"),
+                loginBody.get("LocationCode"),
+                loginBody.get("LocationDescription")
+
+
+        );
+    }
+
+    @PostMapping(value="/UpdateLocation")
+    public HashMap<String, String> UpdateLocation(@RequestBody HashMap<String,String> loginBody)
+    {
+        return  hrPayRollService.UpdateLocation( loginBody.get("QueryType"),
+                Integer.valueOf(loginBody.get("LocationID")),
+                loginBody.get("LocationName"),
+                loginBody.get("LocationCode"),
+                loginBody.get("LocationDescription")
+
+        );
+    }
+
+    @PostMapping(value="/DeleteLocation")
+    public HashMap<String, String> DeleteLocation(@RequestBody HashMap<String,String> loginBody) {
+        return hrPayRollService.DeleteLocation(loginBody.get("QueryType"),
+                Integer.valueOf(loginBody.get("LocationID")),
+                loginBody.get("LocationName"),
+                loginBody.get("LocationCode"),
+                loginBody.get("LocationDescription")
+
+
+        );
+
+    }
 }

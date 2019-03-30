@@ -245,4 +245,98 @@ public class HrPayRollService {
         return map;
 //Commit set default values QueryType and CountryID,StateID,CityID and set systematic method name
     }
+
+    public HashMap<String,String> AddLocation(String QueryType,String LocationID ,String LocationName, String LocationCode,String LocationDescription) {
+
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterLocation");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "INSERT");
+            storedProcedureQuery.setParameter(2, "1");
+            storedProcedureQuery.setParameter(3, LocationName);
+            storedProcedureQuery.setParameter(4, LocationCode);
+            storedProcedureQuery.setParameter(5,LocationDescription);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(6).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        map.put("Status","Failure");
+        return map;
+    }
+
+    public HashMap<String, String> UpdateLocation(String QueryType,Integer LocationID ,String LocationName, String LocationCode,String LocationDescription){
+        StoredProcedureQuery storedProcedureQuery=  em.createStoredProcedureQuery("MasterLocation");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "UPDATE");
+            storedProcedureQuery.setParameter(2, LocationID);
+            storedProcedureQuery.setParameter(3, LocationName);
+            storedProcedureQuery.setParameter(4, LocationCode);
+            storedProcedureQuery.setParameter(5, LocationDescription);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(6).toString();
+
+            map.put("Status", result);
+
+            return map;
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        map.put("Status","Failure");
+        return map;
+    }
+
+    public HashMap<String, String> DeleteLocation( String QueryType,Integer LocationID ,String LocationName, String LocationCode,String LocationDescription)
+    {
+        StoredProcedureQuery storedProcedureQuery=  em.createStoredProcedureQuery("MasterLocation");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "DELETE");
+            storedProcedureQuery.setParameter(2, LocationID);
+            storedProcedureQuery.setParameter(3, LocationName);
+            storedProcedureQuery.setParameter(4, LocationCode);
+            storedProcedureQuery.setParameter(5, LocationDescription);
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(6).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        map.put("Status","Failure");
+        return map;
+
+    }
 }
