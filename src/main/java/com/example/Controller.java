@@ -2,13 +2,12 @@ package com.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
+
 //@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class Controller {
@@ -177,10 +176,21 @@ public class Controller {
                 Integer.valueOf(loginBody.get("LocationID")),
                 loginBody.get("LocationName"),
                 loginBody.get("LocationCode"),
-                loginBody.get("LocationDescription")
-
-
-        );
+                loginBody.get("LocationDescription"));
 
     }
+    @GetMapping(name = "/GetAllEmolyeeDetails")
+    public List<EmployeeBasicDetails> GetAllEmolyeeDetails(){
+//        return hrPayRollService.GetAllEmolyeeDetails(Employee.get("QueryType"),
+//                Integer.valueOf(Employee.get("E_ID")));
+        return hrPayRollService.GetAllEmolyeeDetails();
+    }
+
+    @RequestMapping(name = "/GetEmolyeeDetail")
+    public List<EmployeeBasicDetails> GetEmolyeeDetail(@RequestBody HashMap<String, String> Employee){
+        return hrPayRollService.GetEmolyeeDetail( Employee.get("QueryType"),
+                Integer.valueOf(Employee.get("E_ID")));
+    }
+
+
 }

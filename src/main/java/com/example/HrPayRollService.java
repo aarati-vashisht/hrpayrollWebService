@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class HrPayRollService {
@@ -392,4 +393,34 @@ public class HrPayRollService {
         map.put("STATUS", output);
         return map;
     }
+
+    //get all employee details and get employee details by employee id//
+
+
+    public List<EmployeeBasicDetails> GetAllEmolyeeDetails() {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getEmployeeDetails", "resultMapping");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.setParameter(1, "GetAllEmolyeeDetail");
+            storedProcedureQuery.setParameter(2, 1);
+            return storedProcedureQuery.getResultList();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    public List<EmployeeBasicDetails> GetEmolyeeDetail(String QueryType, Integer E_ID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getEmployeeDetails", "resultMapping");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.setParameter(1, "GetEmolyeeDetail");
+        storedProcedureQuery.setParameter(2, E_ID);
+        return storedProcedureQuery.getResultList();
+    }
+
+
 }
+
+
