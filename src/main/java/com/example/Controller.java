@@ -181,8 +181,6 @@ public class Controller {
     }
     @GetMapping(name = "/GetAllEmolyeeDetails")
     public List<EmployeeBasicDetails> GetAllEmolyeeDetails(){
-//        return hrPayRollService.GetAllEmolyeeDetails(Employee.get("QueryType"),
-//                Integer.valueOf(Employee.get("E_ID")));
         return hrPayRollService.GetAllEmolyeeDetails();
     }
 
