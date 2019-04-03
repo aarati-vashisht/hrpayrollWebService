@@ -154,7 +154,7 @@ public class HrPayRollService {
 
     }
 
-    public HashMap<String, String> AddCountry(String QueryType, String CountryID, String CountryName, String CountryCode, String CreatedBy, String UpdatedBy) {
+    public HashMap<String, String> AddCountry(String CountryName, String CountryCode, String CreatedBy, String UpdatedBy,String Description) {
 
 
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterCountry");
@@ -165,7 +165,8 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.OUT);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, String.class, ParameterMode.OUT);
 
             storedProcedureQuery.setParameter(1, "INSERT");
             storedProcedureQuery.setParameter(2, "1");
@@ -173,10 +174,11 @@ public class HrPayRollService {
             storedProcedureQuery.setParameter(4, CountryCode);
             storedProcedureQuery.setParameter(5, CreatedBy);
             storedProcedureQuery.setParameter(6, UpdatedBy);
+            storedProcedureQuery.setParameter(7, Description);
 
 
             storedProcedureQuery.execute();
-            String result = storedProcedureQuery.getOutputParameterValue(7).toString();
+            String result = storedProcedureQuery.getOutputParameterValue(8).toString();
 
             map.put("Status", result);
 
@@ -190,7 +192,7 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> UpdateCountry(String QueryType, Integer CountryID, String CountryName, String CountryCode, String CreatedBy, String UpdatedBy) {
+    public HashMap<String, String> UpdateCountry( Integer CountryID, String CountryName, String CountryCode, String CreatedBy, String UpdatedBy,String Description) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterCountry");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -199,7 +201,8 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.OUT);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, String.class, ParameterMode.OUT);
 
             storedProcedureQuery.setParameter(1, "UPDATE");
             storedProcedureQuery.setParameter(2, CountryID);
@@ -207,10 +210,11 @@ public class HrPayRollService {
             storedProcedureQuery.setParameter(4, CountryCode);
             storedProcedureQuery.setParameter(5, CreatedBy);
             storedProcedureQuery.setParameter(6, UpdatedBy);
+            storedProcedureQuery.setParameter(7, Description);
 
 
             storedProcedureQuery.execute();
-            String result = storedProcedureQuery.getOutputParameterValue(7).toString();
+            String result = storedProcedureQuery.getOutputParameterValue(8).toString();
 
             map.put("Status", result);
 

@@ -90,12 +90,11 @@ public class Controller {
 
     @PostMapping(value = "/AddCountry")
     public HashMap<String, String> AddCountry(@RequestBody HashMap<String, String> loginBody) {
-        return hrPayRollService.AddCountry(loginBody.get("QueryType"),
-                loginBody.get("CountryID"),
+        return hrPayRollService.AddCountry(
                 loginBody.get("CountryName"),
                 loginBody.get("CountryCode"),
                 loginBody.get("CreatedBy"),
-                loginBody.get("UpdatedBy")
+                loginBody.get("UpdatedBy"),loginBody.get("Description")
 
         );
     }
@@ -103,12 +102,12 @@ public class Controller {
 
     @PostMapping(value = "/UpdateCountry")
     public HashMap<String, String> UpdateCountry(@RequestBody HashMap<String, String> loginBody) {
-        return hrPayRollService.UpdateCountry(loginBody.get("QueryType"),
+        return hrPayRollService.UpdateCountry(
                 Integer.valueOf(loginBody.get("CountryID")),
                 loginBody.get("CountryName"),
                 loginBody.get("CountryCode"),
                 loginBody.get("CreatedBy"),
-                loginBody.get("UpdatedBy")
+                loginBody.get("UpdatedBy"),loginBody.get("Description")
 
         );
     }
