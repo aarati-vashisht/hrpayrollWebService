@@ -65,7 +65,6 @@ public class Controller {
     }
 
     @PostMapping(value = "/UpdateCity", produces = MediaType.APPLICATION_JSON_VALUE)
-      Integer.valueOf(upadteBody.get("StateID")));
     public HashMap<String, String> UpdateCity(@RequestBody HashMap<String, String> upadteCityBody) {
         return hrPayRollService.UpdateCity(upadteCityBody.get("QueryType"),
                 upadteCityBody.get("CityName"),
@@ -101,7 +100,7 @@ public class Controller {
         );
     }
 
-  
+
     @PostMapping(value = "/UpdateCountry")
     public HashMap<String, String> UpdateCountry(@RequestBody HashMap<String, String> loginBody) {
         return hrPayRollService.UpdateCountry(loginBody.get("QueryType"),
@@ -150,7 +149,6 @@ public class Controller {
 
     }
     ///Save Employee data////
-
 
 
     @PostMapping(value = "/AddLocation")
@@ -290,10 +288,9 @@ public class Controller {
 
     }
 
-    @PostMapping(value="/AddDepartment")
-    public HashMap<String, String> AddDepartment(@RequestBody HashMap<String,String> saveBody)
-    {
-        return  hrPayRollService.AddDepartment( saveBody.get("QueryType"),
+    @PostMapping(value = "/AddDepartment")
+    public HashMap<String, String> AddDepartment(@RequestBody HashMap<String, String> saveBody) {
+        return hrPayRollService.AddDepartment(saveBody.get("QueryType"),
                 saveBody.get("DepartmentID"),
                 Integer.valueOf(saveBody.get("LocationID")),
                 saveBody.get("DepartmentName"),
@@ -303,10 +300,9 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/UpdateDepartment")
-    public HashMap<String, String> UpdateDepartment(@RequestBody HashMap<String,String> updateBody)
-    {
-        return  hrPayRollService.UpdateDepartment( updateBody.get("QueryType"),
+    @PostMapping(value = "/UpdateDepartment")
+    public HashMap<String, String> UpdateDepartment(@RequestBody HashMap<String, String> updateBody) {
+        return hrPayRollService.UpdateDepartment(updateBody.get("QueryType"),
                 Integer.valueOf(updateBody.get("DepartmentID")),
                 Integer.valueOf(updateBody.get("LocationID")),
                 updateBody.get("DepartmentName"),
@@ -316,10 +312,9 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/DeleteDepartment")
-    public HashMap<String, String> DeleteDepartment(@RequestBody HashMap<String,String> deleteBody)
-    {
-        return  hrPayRollService.DeleteDepartment( deleteBody.get("QueryType"),
+    @PostMapping(value = "/DeleteDepartment")
+    public HashMap<String, String> DeleteDepartment(@RequestBody HashMap<String, String> deleteBody) {
+        return hrPayRollService.DeleteDepartment(deleteBody.get("QueryType"),
                 Integer.valueOf(deleteBody.get("DepartmentID")),
                 Integer.valueOf(deleteBody.get("LocationID")),
                 deleteBody.get("DepartmentName"),
@@ -330,10 +325,9 @@ public class Controller {
 
     }
 
-    @PostMapping(value="/AddDesignation")
-    public HashMap<String, String> AddDesignation(@RequestBody HashMap<String,String> saveBody)
-    {
-        return  hrPayRollService.AddDesignation( saveBody.get("QueryType"),
+    @PostMapping(value = "/AddDesignation")
+    public HashMap<String, String> AddDesignation(@RequestBody HashMap<String, String> saveBody) {
+        return hrPayRollService.AddDesignation(saveBody.get("QueryType"),
                 saveBody.get("DesignationID"),
                 Integer.valueOf(saveBody.get("DepartmentID")),
                 saveBody.get("DesignationName"),
@@ -343,10 +337,9 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/UpdateDesignation")
-    public HashMap<String, String> UpdateDesignation(@RequestBody HashMap<String,String> updateBody)
-    {
-        return  hrPayRollService.UpdateDesignation( updateBody.get("QueryType"),
+    @PostMapping(value = "/UpdateDesignation")
+    public HashMap<String, String> UpdateDesignation(@RequestBody HashMap<String, String> updateBody) {
+        return hrPayRollService.UpdateDesignation(updateBody.get("QueryType"),
                 Integer.valueOf(updateBody.get("DesignationID")),
                 Integer.valueOf(updateBody.get("DepartmentID")),
                 updateBody.get("DesignationName"),
@@ -356,10 +349,9 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/DeleteDesignation")
-    public HashMap<String, String> DeleteDesignation(@RequestBody HashMap<String,String> deleteBody)
-    {
-        return  hrPayRollService.DeleteDesignation( deleteBody.get("QueryType"),
+    @PostMapping(value = "/DeleteDesignation")
+    public HashMap<String, String> DeleteDesignation(@RequestBody HashMap<String, String> deleteBody) {
+        return hrPayRollService.DeleteDesignation(deleteBody.get("QueryType"),
                 Integer.valueOf(deleteBody.get("DepartmentID")),
                 Integer.valueOf(deleteBody.get("DepartmentID")),
                 deleteBody.get("DesignationName"),
@@ -370,10 +362,9 @@ public class Controller {
 
     }
 
-    @PostMapping(value="/AddSchool")
-    public HashMap<String, String> AddSchool(@RequestBody HashMap<String,String> saveBody)
-    {
-        return  hrPayRollService.AddSchool( saveBody.get("QueryType"),
+    @PostMapping(value = "/AddSchool")
+    public HashMap<String, String> AddSchool(@RequestBody HashMap<String, String> saveBody) {
+        return hrPayRollService.AddSchool(saveBody.get("QueryType"),
                 saveBody.get("SchoolID"),
                 saveBody.get("ClassName"),
                 saveBody.get("BoardName"),
@@ -386,10 +377,9 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/UpdateSchool")
-    public HashMap<String, String> UpdateSchool(@RequestBody HashMap<String,String> updateBody)
-    {
-        return  hrPayRollService.UpdateSchool( updateBody.get("QueryType"),
+    @PostMapping(value = "/UpdateSchool")
+    public HashMap<String, String> UpdateSchool(@RequestBody HashMap<String, String> updateBody) {
+        return hrPayRollService.UpdateSchool(updateBody.get("QueryType"),
                 Integer.valueOf(updateBody.get("SchoolID")),
                 updateBody.get("ClassName"),
                 updateBody.get("BoardName"),
@@ -401,10 +391,9 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/DeleteSchool")
-    public HashMap<String, String> DeleteSchool(@RequestBody HashMap<String,String> deleteBody)
-    {
-        return  hrPayRollService.DeleteSchool( deleteBody.get("QueryType"),
+    @PostMapping(value = "/DeleteSchool")
+    public HashMap<String, String> DeleteSchool(@RequestBody HashMap<String, String> deleteBody) {
+        return hrPayRollService.DeleteSchool(deleteBody.get("QueryType"),
                 Integer.valueOf(deleteBody.get("SchoolID")),
                 deleteBody.get("ClassName"),
                 deleteBody.get("BoardName"),
@@ -417,10 +406,9 @@ public class Controller {
 
     }
 
-    @PostMapping(value="/AddGraduation")
-    public HashMap<String, String> AddGraduation(@RequestBody HashMap<String,String> saveBody)
-    {
-        return  hrPayRollService.AddGraduation( saveBody.get("QueryType"),
+    @PostMapping(value = "/AddGraduation")
+    public HashMap<String, String> AddGraduation(@RequestBody HashMap<String, String> saveBody) {
+        return hrPayRollService.AddGraduation(saveBody.get("QueryType"),
                 saveBody.get("GraduationID"),
                 saveBody.get("CourseName"),
                 saveBody.get("UniversityName"),
@@ -433,10 +421,9 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/UpdateGraduation")
-    public HashMap<String, String> UpdateGraduation(@RequestBody HashMap<String,String> updateBody)
-    {
-        return  hrPayRollService.UpdateGraduation( updateBody.get("QueryType"),
+    @PostMapping(value = "/UpdateGraduation")
+    public HashMap<String, String> UpdateGraduation(@RequestBody HashMap<String, String> updateBody) {
+        return hrPayRollService.UpdateGraduation(updateBody.get("QueryType"),
                 Integer.valueOf(updateBody.get("GraduationID")),
                 updateBody.get("CourseName"),
                 updateBody.get("UniversityName"),
@@ -448,10 +435,9 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/DeleteGraduation")
-    public HashMap<String, String> DeleteGraduation(@RequestBody HashMap<String,String> deleteBody)
-    {
-        return  hrPayRollService.DeleteGraduation( deleteBody.get("QueryType"),
+    @PostMapping(value = "/DeleteGraduation")
+    public HashMap<String, String> DeleteGraduation(@RequestBody HashMap<String, String> deleteBody) {
+        return hrPayRollService.DeleteGraduation(deleteBody.get("QueryType"),
                 Integer.valueOf(deleteBody.get("GraduationID")),
                 deleteBody.get("CourseName"),
                 deleteBody.get("UniversityName"),
@@ -464,10 +450,9 @@ public class Controller {
 
     }
 
-    @PostMapping(value="/AddPostGraduation")
-    public HashMap<String, String> AddPostGraduation(@RequestBody HashMap<String,String> saveBody)
-    {
-        return  hrPayRollService.AddPostGraduation( saveBody.get("QueryType"),
+    @PostMapping(value = "/AddPostGraduation")
+    public HashMap<String, String> AddPostGraduation(@RequestBody HashMap<String, String> saveBody) {
+        return hrPayRollService.AddPostGraduation(saveBody.get("QueryType"),
                 saveBody.get("PostGraduationID"),
                 saveBody.get("CourseName"),
                 saveBody.get("UniversityName"),
@@ -480,10 +465,9 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/UpdatePostGraduation")
-    public HashMap<String, String> UpdatePostGraduation(@RequestBody HashMap<String,String> updateBody)
-    {
-        return  hrPayRollService.UpdatePostGraduation( updateBody.get("QueryType"),
+    @PostMapping(value = "/UpdatePostGraduation")
+    public HashMap<String, String> UpdatePostGraduation(@RequestBody HashMap<String, String> updateBody) {
+        return hrPayRollService.UpdatePostGraduation(updateBody.get("QueryType"),
                 Integer.valueOf(updateBody.get("PostGraduationID")),
                 updateBody.get("CourseName"),
                 updateBody.get("UniversityName"),
@@ -495,10 +479,9 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/DeletePostGraduation")
-    public HashMap<String, String> DeletePostGraduation(@RequestBody HashMap<String,String> deleteBody)
-    {
-        return  hrPayRollService.DeletePostGraduation( deleteBody.get("QueryType"),
+    @PostMapping(value = "/DeletePostGraduation")
+    public HashMap<String, String> DeletePostGraduation(@RequestBody HashMap<String, String> deleteBody) {
+        return hrPayRollService.DeletePostGraduation(deleteBody.get("QueryType"),
                 Integer.valueOf(deleteBody.get("PostGraduationID")),
                 deleteBody.get("CourseName"),
                 deleteBody.get("UniversityName"),
@@ -511,10 +494,9 @@ public class Controller {
 
     }
 
-    @PostMapping(value="/AddOtherEduQualifiaction")
-    public HashMap<String, String> AddOtherEduQualifiaction(@RequestBody HashMap<String,String> saveBody)
-    {
-        return  hrPayRollService.AddOtherEduQualifiaction( saveBody.get("QueryType"),
+    @PostMapping(value = "/AddOtherEduQualifiaction")
+    public HashMap<String, String> AddOtherEduQualifiaction(@RequestBody HashMap<String, String> saveBody) {
+        return hrPayRollService.AddOtherEduQualifiaction(saveBody.get("QueryType"),
                 saveBody.get("otherEduQualificationTableID"),
                 saveBody.get("CourseName"),
                 saveBody.get("UniversityName"),
@@ -527,10 +509,9 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/UpdateOtherEduQualifiaction")
-    public HashMap<String, String> UpdateOtherEduQualifiaction(@RequestBody HashMap<String,String> updateBody)
-    {
-        return  hrPayRollService.UpdateOtherEduQualifiaction( updateBody.get("QueryType"),
+    @PostMapping(value = "/UpdateOtherEduQualifiaction")
+    public HashMap<String, String> UpdateOtherEduQualifiaction(@RequestBody HashMap<String, String> updateBody) {
+        return hrPayRollService.UpdateOtherEduQualifiaction(updateBody.get("QueryType"),
                 Integer.valueOf(updateBody.get("otherEduQualificationTableID")),
                 updateBody.get("CourseName"),
                 updateBody.get("UniversityName"),
@@ -542,10 +523,9 @@ public class Controller {
         );
     }
 
-    @PostMapping(value="/DeleteOtherEduQualifiaction")
-    public HashMap<String, String> DeleteOtherEduQualifiaction(@RequestBody HashMap<String,String> deleteBody)
-    {
-        return  hrPayRollService.DeleteOtherEduQualifiaction( deleteBody.get("QueryType"),
+    @PostMapping(value = "/DeleteOtherEduQualifiaction")
+    public HashMap<String, String> DeleteOtherEduQualifiaction(@RequestBody HashMap<String, String> deleteBody) {
+        return hrPayRollService.DeleteOtherEduQualifiaction(deleteBody.get("QueryType"),
                 Integer.valueOf(deleteBody.get("otherEduQualificationTableID")),
                 deleteBody.get("CourseName"),
                 deleteBody.get("UniversityName"),
