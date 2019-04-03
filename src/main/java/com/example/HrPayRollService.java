@@ -87,9 +87,7 @@ public class HrPayRollService {
     }
 
 
-
-
-    public HashMap<String, String> AddCity(String QueryType, String CityName, String CreatedBy, String UpdatedBy, Integer StateID,String CityID) {
+    public HashMap<String, String> AddCity(String QueryType, String CityName, String CreatedBy, String UpdatedBy, Integer StateID, String CityID) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterCity");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
@@ -153,10 +151,10 @@ public class HrPayRollService {
         map.put("STATUS", output);
         return map;
 
-      
+
     }
 
-    public HashMap<String,String> AddCountry(String QueryType,String CountryID ,String CountryName, String CountryCode, String CreatedBy,String UpdatedBy ) {
+    public HashMap<String, String> AddCountry(String QueryType, String CountryID, String CountryName, String CountryCode, String CreatedBy, String UpdatedBy) {
 
 
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterCountry");
@@ -192,8 +190,8 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> UpdateCountry(String QueryType,Integer CountryID , String CountryName, String CountryCode, String CreatedBy, String UpdatedBy){
-        StoredProcedureQuery storedProcedureQuery=  em.createStoredProcedureQuery("MasterCountry");
+    public HashMap<String, String> UpdateCountry(String QueryType, Integer CountryID, String CountryName, String CountryCode, String CreatedBy, String UpdatedBy) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterCountry");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
@@ -225,9 +223,8 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> DeleteCountry( String QueryType,Integer CountryID, String CountryName, String CountryCode, String CreatedBy, String UpdatedBy)
-    {
-        StoredProcedureQuery storedProcedureQuery=  em.createStoredProcedureQuery("MasterCountry");
+    public HashMap<String, String> DeleteCountry(String QueryType, Integer CountryID, String CountryName, String CountryCode, String CreatedBy, String UpdatedBy) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterCountry");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
@@ -259,7 +256,7 @@ public class HrPayRollService {
 //Commit set default values QueryType and CountryID,StateID,CityID and set systematic method name
     }
 
-    public HashMap<String,String> AddLocation(String QueryType,String LocationID ,String LocationName, String LocationCode,String LocationDescription) {
+    public HashMap<String, String> AddLocation(String QueryType, String LocationID, String LocationName, String LocationCode, String LocationDescription) {
 
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterLocation");
         try {
@@ -274,7 +271,7 @@ public class HrPayRollService {
             storedProcedureQuery.setParameter(2, "1");
             storedProcedureQuery.setParameter(3, LocationName);
             storedProcedureQuery.setParameter(4, LocationCode);
-            storedProcedureQuery.setParameter(5,LocationDescription);
+            storedProcedureQuery.setParameter(5, LocationDescription);
 
 
             storedProcedureQuery.execute();
@@ -284,15 +281,15 @@ public class HrPayRollService {
 
             return map;
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
-        map.put("Status","Failure");
+        map.put("Status", "Failure");
         return map;
     }
 
-    public HashMap<String, String> UpdateLocation(String QueryType,Integer LocationID ,String LocationName, String LocationCode,String LocationDescription){
-        StoredProcedureQuery storedProcedureQuery=  em.createStoredProcedureQuery("MasterLocation");
+    public HashMap<String, String> UpdateLocation(String QueryType, Integer LocationID, String LocationName, String LocationCode, String LocationDescription) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterLocation");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
@@ -314,16 +311,15 @@ public class HrPayRollService {
             map.put("Status", result);
 
             return map;
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
-        map.put("Status","Failure");
+        map.put("Status", "Failure");
         return map;
     }
 
-    public HashMap<String, String> DeleteLocation( String QueryType,Integer LocationID ,String LocationName, String LocationCode,String LocationDescription)
-    {
-        StoredProcedureQuery storedProcedureQuery=  em.createStoredProcedureQuery("MasterLocation");
+    public HashMap<String, String> DeleteLocation(String QueryType, Integer LocationID, String LocationName, String LocationCode, String LocationDescription) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterLocation");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
@@ -345,16 +341,16 @@ public class HrPayRollService {
 
             return map;
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
-        map.put("Status","Failure");
+        map.put("Status", "Failure");
         return map;
 
     }
 
 
-    public HashMap<String, String> SaveEmployee(String QueryType, Integer E_Code, String E_FristName, String E_MiddleName, String E_LastName, Integer E_Designaton, String E_Gender, String E_Title, String E_DOB, String E_Dept, String E_MaritalStatus, String Anniversary, String E_Image, String E_EmployementType, String CreatedBy, String UpdatedBy) throws ParseException {
+    public HashMap<String, String> AddEmployee(String QueryType, Integer E_Code, String E_FristName, String E_MiddleName, String E_LastName, Integer E_Designaton, String E_Gender, String E_Title, String E_DOB, String E_Dept, String E_MaritalStatus, String Anniversary, String E_Image, String E_EmployementType, String CreatedBy, String UpdatedBy) throws ParseException {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterEmployee");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
@@ -396,6 +392,660 @@ public class HrPayRollService {
         return map;
     }
 
+    public HashMap<String, String> AddDepartment(String QueryType, String DepartmentID, Integer LocationID, String DepartmentName, String DepartmentCode, String Description) {
+
+
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDepartment");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "INSERT");
+            storedProcedureQuery.setParameter(2, "1");
+            storedProcedureQuery.setParameter(3, LocationID);
+            storedProcedureQuery.setParameter(4, DepartmentName);
+            storedProcedureQuery.setParameter(5, DepartmentCode);
+            storedProcedureQuery.setParameter(6, Description);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(7).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> UpdateDepartment(String QueryType, Integer DepartmentID, Integer LocationID, String DepartmentName, String DepartmentCode, String Description) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDepartment");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "UPDATE");
+            storedProcedureQuery.setParameter(2, DepartmentID);
+            storedProcedureQuery.setParameter(3, LocationID);
+            storedProcedureQuery.setParameter(4, DepartmentName);
+            storedProcedureQuery.setParameter(5, DepartmentCode);
+            storedProcedureQuery.setParameter(6, Description);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(7).toString();
+
+            map.put("Status", result);
+
+            return map;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> DeleteDepartment(String QueryType, Integer DepartmentID, Integer LocationID, String DepartmentName, String DepartmentCode, String Description) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDepartment");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "DELETE");
+            storedProcedureQuery.setParameter(2, DepartmentID);
+            storedProcedureQuery.setParameter(3, LocationID);
+            storedProcedureQuery.setParameter(4, DepartmentName);
+            storedProcedureQuery.setParameter(5, DepartmentCode);
+            storedProcedureQuery.setParameter(6, Description);
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(7).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+    public HashMap<String, String> AddDesignation(String QueryType, String DesignationID, Integer DepartmentID, String DesignationName, String DesignationCode, String Description) {
+
+
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDesignation");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "INSERT");
+            storedProcedureQuery.setParameter(2, "1");
+            storedProcedureQuery.setParameter(3, DepartmentID);
+            storedProcedureQuery.setParameter(4, DesignationName);
+            storedProcedureQuery.setParameter(5, DesignationCode);
+            storedProcedureQuery.setParameter(6, Description);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(7).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> UpdateDesignation(String QueryType, Integer DesignationID, Integer DepartmentID, String DesignationName, String DesignationCode, String Description) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDesignation");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "UPDATE");
+            storedProcedureQuery.setParameter(2, DesignationID);
+            storedProcedureQuery.setParameter(3, DepartmentID);
+            storedProcedureQuery.setParameter(4, DesignationName);
+            storedProcedureQuery.setParameter(5, DesignationCode);
+            storedProcedureQuery.setParameter(6, Description);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(7).toString();
+
+            map.put("Status", result);
+
+            return map;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> DeleteDesignation(String QueryType, Integer DesignationID, Integer DepartmentID, String DesignationName, String DesignationCode, String Description) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDesignation");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "DELETE");
+            storedProcedureQuery.setParameter(2, DesignationID);
+            storedProcedureQuery.setParameter(3, DepartmentID);
+            storedProcedureQuery.setParameter(4, DesignationName);
+            storedProcedureQuery.setParameter(5, DesignationCode);
+            storedProcedureQuery.setParameter(6, Description);
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(7).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+    public HashMap<String, String> AddSchool(String QueryType, String SchoolID, String ClassName, String BoardName, String SchoolName, String StartDate,String EndDate,Float Persentage) {
+
+
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("schoolprocedure");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "INSERT");
+            storedProcedureQuery.setParameter(2, "1");
+            storedProcedureQuery.setParameter(3, ClassName);
+            storedProcedureQuery.setParameter(4, BoardName);
+            storedProcedureQuery.setParameter(5, SchoolName);
+            storedProcedureQuery.setParameter(6, StartDate);
+            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(8, Persentage);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> UpdateSchool(String QueryType, Integer SchoolID, String ClassName, String BoardName, String SchoolName, String StartDate,String EndDate,Float Persentage) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("schoolprocedure");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "UPDATE");
+            storedProcedureQuery.setParameter(2, SchoolID);
+            storedProcedureQuery.setParameter(3, ClassName);
+            storedProcedureQuery.setParameter(4, BoardName);
+            storedProcedureQuery.setParameter(5, SchoolName);
+            storedProcedureQuery.setParameter(6, StartDate);
+            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(8, Persentage);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+
+            map.put("Status", result);
+
+            return map;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> DeleteSchool(String QueryType, Integer SchoolID, String ClassName, String BoardName, String SchoolName, String StartDate,String EndDate,Float Persentage) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("schoolprocedure");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "DELETE");
+            storedProcedureQuery.setParameter(2, SchoolID);
+            storedProcedureQuery.setParameter(3, ClassName);
+            storedProcedureQuery.setParameter(4, BoardName);
+            storedProcedureQuery.setParameter(5, SchoolName);
+            storedProcedureQuery.setParameter(6, StartDate);
+            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(8, Persentage);
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+    public HashMap<String, String> AddGraduation(String QueryType, String GraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+
+
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("graduationprocedure");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "INSERT");
+            storedProcedureQuery.setParameter(2, "1");
+            storedProcedureQuery.setParameter(3, CourseName);
+            storedProcedureQuery.setParameter(4, UniversityName);
+            storedProcedureQuery.setParameter(5, CollegeName);
+            storedProcedureQuery.setParameter(6, StartDate);
+            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(8, Persentage);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> UpdateGraduation(String QueryType, Integer GraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("graduationprocedure");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "UPDATE");
+            storedProcedureQuery.setParameter(2, GraduationID);
+            storedProcedureQuery.setParameter(3, CourseName);
+            storedProcedureQuery.setParameter(4, UniversityName);
+            storedProcedureQuery.setParameter(5, CollegeName);
+            storedProcedureQuery.setParameter(6, StartDate);
+            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(8, Persentage);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+
+            map.put("Status", result);
+
+            return map;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> DeleteGraduation(String QueryType, Integer GraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("graduationprocedure");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "DELETE");
+            storedProcedureQuery.setParameter(2, GraduationID);
+            storedProcedureQuery.setParameter(3, CourseName);
+            storedProcedureQuery.setParameter(4, UniversityName);
+            storedProcedureQuery.setParameter(5, CollegeName);
+            storedProcedureQuery.setParameter(6, StartDate);
+            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(8, Persentage);
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> AddPostGraduation(String QueryType, String GraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+
+
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("postGraduationprocedure");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "INSERT");
+            storedProcedureQuery.setParameter(2, "1");
+            storedProcedureQuery.setParameter(3, CourseName);
+            storedProcedureQuery.setParameter(4, UniversityName);
+            storedProcedureQuery.setParameter(5, CollegeName);
+            storedProcedureQuery.setParameter(6, StartDate);
+            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(8, Persentage);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> UpdatePostGraduation(String QueryType, Integer PostGraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("postGraduationprocedure");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "UPDATE");
+            storedProcedureQuery.setParameter(2, PostGraduationID);
+            storedProcedureQuery.setParameter(3, CourseName);
+            storedProcedureQuery.setParameter(4, UniversityName);
+            storedProcedureQuery.setParameter(5, CollegeName);
+            storedProcedureQuery.setParameter(6, StartDate);
+            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(8, Persentage);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+
+            map.put("Status", result);
+
+            return map;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> DeletePostGraduation(String QueryType, Integer PostGraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("postGraduationprocedure");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "DELETE");
+            storedProcedureQuery.setParameter(2, PostGraduationID);
+            storedProcedureQuery.setParameter(3, CourseName);
+            storedProcedureQuery.setParameter(4, UniversityName);
+            storedProcedureQuery.setParameter(5, CollegeName);
+            storedProcedureQuery.setParameter(6, StartDate);
+            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(8, Persentage);
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> AddOtherEduQualifiaction(String QueryType, String otherEduQualificationTableID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+
+
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("otherEduprocedure");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "INSERT");
+            storedProcedureQuery.setParameter(2, "1");
+            storedProcedureQuery.setParameter(3, CourseName);
+            storedProcedureQuery.setParameter(4, UniversityName);
+            storedProcedureQuery.setParameter(5, CollegeName);
+            storedProcedureQuery.setParameter(6, StartDate);
+            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(8, Persentage);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> UpdateOtherEduQualifiaction(String QueryType, Integer otherEduQualificationTableID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("otherEduprocedure");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "UPDATE");
+            storedProcedureQuery.setParameter(2, otherEduQualificationTableID);
+            storedProcedureQuery.setParameter(3, CourseName);
+            storedProcedureQuery.setParameter(4, UniversityName);
+            storedProcedureQuery.setParameter(5, CollegeName);
+            storedProcedureQuery.setParameter(6, StartDate);
+            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(8, Persentage);
+
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+
+            map.put("Status", result);
+
+            return map;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+        return map;
+    }
+
+
+    public HashMap<String, String> DeleteOtherEduQualifiaction(String QueryType, Integer otherEduQualificationTableID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("otherEduprocedure");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            storedProcedureQuery.setParameter(1, "DELETE");
+            storedProcedureQuery.setParameter(2, otherEduQualificationTableID);
+            storedProcedureQuery.setParameter(3, CourseName);
+            storedProcedureQuery.setParameter(4, UniversityName);
+            storedProcedureQuery.setParameter(5, CollegeName);
+            storedProcedureQuery.setParameter(6, StartDate);
+            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(8, Persentage);
+
+            storedProcedureQuery.execute();
+            String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+
+            map.put("Status", result);
+
+            return map;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        map.put("Status", "Failure");
+=======
     //get all employee details and get employee details by employee id//
 
 
