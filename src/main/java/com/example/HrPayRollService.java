@@ -10,6 +10,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+
+import static com.oracle.jrockit.jfr.ContentType.Address;
 
 @Service
 public class HrPayRollService {
@@ -1042,10 +1045,224 @@ public class HrPayRollService {
             ex.printStackTrace();
         }
         map.put("Status", "Failure");
-        return map;
+=======
+    //get all employee details and get employee details by employee id//
+
+
+    public List<EmployeeBasicDetails> GetAllEmolyeeDetails() {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getEmployeeDetails", "resultMapping");
+        try {
+            storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+            storedProcedureQuery.setParameter(1, "GetAllEmolyeeDetail");
+            storedProcedureQuery.setParameter(2, 1);
+            return storedProcedureQuery.getResultList();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    public List<EmployeeBasicDetails> GetEmolyeeDetail(String QueryType, Integer E_ID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getEmployeeDetails", "resultMapping");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.setParameter(1, "GetEmolyeeDetail");
+        storedProcedureQuery.setParameter(2, E_ID);
+        return storedProcedureQuery.getResultList();
     }
 
 
 
 
+    public HashMap<String, String> SaveAddress(String QueryType, String Address, String City, String State, String Country, String Pin_code, String Address_Status,
+                                               String Contact_No, String Email_ID, String Emergency_contact_person, String Emergency_contact_number, Integer eid, Integer A_ID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterAddressBook");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(12, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(13, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(14, String.class, ParameterMode.OUT);
+
+        storedProcedureQuery.setParameter(1, "INSERT");
+        storedProcedureQuery.setParameter(2, Address);
+        storedProcedureQuery.setParameter(3, City);
+        storedProcedureQuery.setParameter(4, State);
+        storedProcedureQuery.setParameter(5, Country);
+        storedProcedureQuery.setParameter(6, Pin_code);
+        storedProcedureQuery.setParameter(7, Address_Status);
+        storedProcedureQuery.setParameter(8, Contact_No);
+        storedProcedureQuery.setParameter(9, Email_ID);
+        storedProcedureQuery.setParameter(10, Emergency_contact_person);
+        storedProcedureQuery.setParameter(11, Emergency_contact_number);
+        storedProcedureQuery.setParameter(12, eid);
+        storedProcedureQuery.setParameter(13, A_ID);
+        storedProcedureQuery.execute();
+        String output = storedProcedureQuery.getOutputParameterValue(14).toString();
+        map.put("STATUS", output);
+        return map;
+    }
+    public HashMap<String, String> UpdateAddress(String QueryType, String Address, String City, String State, String Country, String Pin_code, String Address_Status,
+                                               String Contact_No, String Email_ID, String Emergency_contact_person, String Emergency_contact_number, Integer eid, Integer A_ID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterAddressBook");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(12, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(13, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(14, String.class, ParameterMode.OUT);
+
+        storedProcedureQuery.setParameter(1, "UPDATE");
+        storedProcedureQuery.setParameter(2, Address);
+        storedProcedureQuery.setParameter(3, City);
+        storedProcedureQuery.setParameter(4, State);
+        storedProcedureQuery.setParameter(5, Country);
+        storedProcedureQuery.setParameter(6, Pin_code);
+        storedProcedureQuery.setParameter(7, Address_Status);
+        storedProcedureQuery.setParameter(8, Contact_No);
+        storedProcedureQuery.setParameter(9, Email_ID);
+        storedProcedureQuery.setParameter(10, Emergency_contact_person);
+        storedProcedureQuery.setParameter(11, Emergency_contact_number);
+        storedProcedureQuery.setParameter(12, eid);
+        storedProcedureQuery.setParameter(13, A_ID);
+        storedProcedureQuery.execute();
+        String output = storedProcedureQuery.getOutputParameterValue(14).toString();
+        map.put("STATUS", output);
+        return map;
+    }
+
+    public HashMap<String, String> DeleteAddress(String QueryType, String Address, String City, String State, String Country, String Pin_code, String Address_Status,
+                                                 String Contact_No, String Email_ID, String Emergency_contact_person, String Emergency_contact_number, Integer eid, Integer A_ID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterAddressBook");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(12, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(13, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(14, String.class, ParameterMode.OUT);
+
+        storedProcedureQuery.setParameter(1, "DELETE");
+        storedProcedureQuery.setParameter(2, Address);
+        storedProcedureQuery.setParameter(3, City);
+        storedProcedureQuery.setParameter(4, State);
+        storedProcedureQuery.setParameter(5, Country);
+        storedProcedureQuery.setParameter(6, Pin_code);
+        storedProcedureQuery.setParameter(7, Address_Status);
+        storedProcedureQuery.setParameter(8, Contact_No);
+        storedProcedureQuery.setParameter(9, Email_ID);
+        storedProcedureQuery.setParameter(10, Emergency_contact_person);
+        storedProcedureQuery.setParameter(11, Emergency_contact_number);
+        storedProcedureQuery.setParameter(12, eid);
+        storedProcedureQuery.setParameter(13, A_ID);
+        storedProcedureQuery.execute();
+        String output = storedProcedureQuery.getOutputParameterValue(14).toString();
+        map.put("STATUS", output);
+        return map;
+    }
+
+
+    public HashMap<String, String> saveProfessionQualification(String QueryType, String Institute, String Course, String Start_Date, String End_Date, Integer Q_id)  throws ParseException  {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("ProfessionalQualification");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.OUT);
+
+        Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(Start_Date);
+        Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(End_Date);
+
+        storedProcedureQuery.setParameter(1, "INSERT");
+        storedProcedureQuery.setParameter(2, Institute);
+        storedProcedureQuery.setParameter(3, Course);
+        storedProcedureQuery.setParameter(4, date1);
+        storedProcedureQuery.setParameter(5, date2);
+        storedProcedureQuery.setParameter(6, Q_id);
+
+        storedProcedureQuery.execute();
+        String output = storedProcedureQuery.getOutputParameterValue(7).toString();
+        map.put("STATUS", output);
+        return map;
+    }
+    public HashMap<String, String> upadteProfessionQualification(String QueryType, String Institute, String Course, String Start_Date, String End_Date, Integer Q_id)  throws ParseException  {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("ProfessionalQualification");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.OUT);
+
+        Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(Start_Date);
+        Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(End_Date);
+
+            storedProcedureQuery.setParameter(1, "UPDATE");
+        storedProcedureQuery.setParameter(2, Institute);
+        storedProcedureQuery.setParameter(3, Course);
+        storedProcedureQuery.setParameter(4, date1);
+        storedProcedureQuery.setParameter(5, date2);
+        storedProcedureQuery.setParameter(6, Q_id);
+
+        storedProcedureQuery.execute();
+        String output = storedProcedureQuery.getOutputParameterValue(7).toString();
+        map.put("STATUS", output);
+        return map;
+    }
+    public HashMap<String, String> DeleteProfessionQualification(String QueryType, String Institute, String Course, String Start_Date, String End_Date, Integer Q_id)  throws ParseException  {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("ProfessionalQualification");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.OUT);
+
+        Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(Start_Date);
+        Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(End_Date);
+
+        storedProcedureQuery.setParameter(1, "DELETE");
+        storedProcedureQuery.setParameter(2, Institute);
+        storedProcedureQuery.setParameter(3, Course);
+        storedProcedureQuery.setParameter(4, date1);
+        storedProcedureQuery.setParameter(5, date2);
+        storedProcedureQuery.setParameter(6, Q_id);
+
+        storedProcedureQuery.execute();
+        String output = storedProcedureQuery.getOutputParameterValue(7).toString();
+        map.put("STATUS", output);
+        return map;
+    }
+
+
 }
+
+
