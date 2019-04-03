@@ -604,18 +604,21 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, Date.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
+            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
 
             storedProcedureQuery.setParameter(1, "INSERT");
             storedProcedureQuery.setParameter(2, "1");
             storedProcedureQuery.setParameter(3, ClassName);
             storedProcedureQuery.setParameter(4, BoardName);
             storedProcedureQuery.setParameter(5, SchoolName);
-            storedProcedureQuery.setParameter(6, StartDate);
-            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(6, date1);
+            storedProcedureQuery.setParameter(7, date2);
             storedProcedureQuery.setParameter(8, Persentage);
 
 
@@ -642,18 +645,21 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, Date.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
+            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
 
             storedProcedureQuery.setParameter(1, "UPDATE");
             storedProcedureQuery.setParameter(2, SchoolID);
             storedProcedureQuery.setParameter(3, ClassName);
             storedProcedureQuery.setParameter(4, BoardName);
             storedProcedureQuery.setParameter(5, SchoolName);
-            storedProcedureQuery.setParameter(6, StartDate);
-            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(6, date1);
+            storedProcedureQuery.setParameter(7, date2);
             storedProcedureQuery.setParameter(8, Persentage);
 
 
@@ -679,18 +685,21 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, Date.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
+            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
 
             storedProcedureQuery.setParameter(1, "DELETE");
             storedProcedureQuery.setParameter(2, SchoolID);
             storedProcedureQuery.setParameter(3, ClassName);
             storedProcedureQuery.setParameter(4, BoardName);
             storedProcedureQuery.setParameter(5, SchoolName);
-            storedProcedureQuery.setParameter(6, StartDate);
-            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(6, date1);
+            storedProcedureQuery.setParameter(7, date2);
             storedProcedureQuery.setParameter(8, Persentage);
 
             storedProcedureQuery.execute();
@@ -717,18 +726,21 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, Date.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
+            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
 
             storedProcedureQuery.setParameter(1, "INSERT");
             storedProcedureQuery.setParameter(2, "1");
             storedProcedureQuery.setParameter(3, CourseName);
             storedProcedureQuery.setParameter(4, UniversityName);
             storedProcedureQuery.setParameter(5, CollegeName);
-            storedProcedureQuery.setParameter(6, StartDate);
-            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(6, date1);
+            storedProcedureQuery.setParameter(7, date2);
             storedProcedureQuery.setParameter(8, Persentage);
 
 
@@ -755,18 +767,21 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, Date.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
+            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
 
             storedProcedureQuery.setParameter(1, "UPDATE");
             storedProcedureQuery.setParameter(2, GraduationID);
             storedProcedureQuery.setParameter(3, CourseName);
             storedProcedureQuery.setParameter(4, UniversityName);
             storedProcedureQuery.setParameter(5, CollegeName);
-            storedProcedureQuery.setParameter(6, StartDate);
-            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(6, date1);
+            storedProcedureQuery.setParameter(7, date2);
             storedProcedureQuery.setParameter(8, Persentage);
 
 
@@ -792,18 +807,21 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, Date.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
+            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
 
             storedProcedureQuery.setParameter(1, "DELETE");
             storedProcedureQuery.setParameter(2, GraduationID);
             storedProcedureQuery.setParameter(3, CourseName);
             storedProcedureQuery.setParameter(4, UniversityName);
             storedProcedureQuery.setParameter(5, CollegeName);
-            storedProcedureQuery.setParameter(6, StartDate);
-            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(6, date1);
+            storedProcedureQuery.setParameter(7, date2);
             storedProcedureQuery.setParameter(8, Persentage);
 
             storedProcedureQuery.execute();
@@ -831,18 +849,21 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, Date.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
+            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
 
             storedProcedureQuery.setParameter(1, "INSERT");
             storedProcedureQuery.setParameter(2, "1");
             storedProcedureQuery.setParameter(3, CourseName);
             storedProcedureQuery.setParameter(4, UniversityName);
             storedProcedureQuery.setParameter(5, CollegeName);
-            storedProcedureQuery.setParameter(6, StartDate);
-            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(6, date1);
+            storedProcedureQuery.setParameter(7, date2);
             storedProcedureQuery.setParameter(8, Persentage);
 
 
@@ -869,18 +890,21 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, Date.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
+            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
 
             storedProcedureQuery.setParameter(1, "UPDATE");
             storedProcedureQuery.setParameter(2, PostGraduationID);
             storedProcedureQuery.setParameter(3, CourseName);
             storedProcedureQuery.setParameter(4, UniversityName);
             storedProcedureQuery.setParameter(5, CollegeName);
-            storedProcedureQuery.setParameter(6, StartDate);
-            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(6, date1);
+            storedProcedureQuery.setParameter(7, date2);
             storedProcedureQuery.setParameter(8, Persentage);
 
 
@@ -906,18 +930,21 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, Date.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
+            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
 
             storedProcedureQuery.setParameter(1, "DELETE");
             storedProcedureQuery.setParameter(2, PostGraduationID);
             storedProcedureQuery.setParameter(3, CourseName);
             storedProcedureQuery.setParameter(4, UniversityName);
             storedProcedureQuery.setParameter(5, CollegeName);
-            storedProcedureQuery.setParameter(6, StartDate);
-            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(6, date1);
+            storedProcedureQuery.setParameter(7, date2);
             storedProcedureQuery.setParameter(8, Persentage);
 
             storedProcedureQuery.execute();
@@ -945,18 +972,21 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, Date.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
+            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
 
             storedProcedureQuery.setParameter(1, "INSERT");
             storedProcedureQuery.setParameter(2, "1");
             storedProcedureQuery.setParameter(3, CourseName);
             storedProcedureQuery.setParameter(4, UniversityName);
             storedProcedureQuery.setParameter(5, CollegeName);
-            storedProcedureQuery.setParameter(6, StartDate);
-            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(6, date1);
+            storedProcedureQuery.setParameter(7, date2);
             storedProcedureQuery.setParameter(8, Persentage);
 
 
@@ -983,18 +1013,21 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, Date.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
+            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
 
             storedProcedureQuery.setParameter(1, "UPDATE");
             storedProcedureQuery.setParameter(2, otherEduQualificationTableID);
             storedProcedureQuery.setParameter(3, CourseName);
             storedProcedureQuery.setParameter(4, UniversityName);
             storedProcedureQuery.setParameter(5, CollegeName);
-            storedProcedureQuery.setParameter(6, StartDate);
-            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(6, date1);
+            storedProcedureQuery.setParameter(7, date2);
             storedProcedureQuery.setParameter(8, Persentage);
 
 
@@ -1020,18 +1053,21 @@ public class HrPayRollService {
             storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-            storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(6, Date.class, ParameterMode.IN);
+            storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
             storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
+            Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
 
             storedProcedureQuery.setParameter(1, "DELETE");
             storedProcedureQuery.setParameter(2, otherEduQualificationTableID);
             storedProcedureQuery.setParameter(3, CourseName);
             storedProcedureQuery.setParameter(4, UniversityName);
             storedProcedureQuery.setParameter(5, CollegeName);
-            storedProcedureQuery.setParameter(6, StartDate);
-            storedProcedureQuery.setParameter(7, EndDate);
+            storedProcedureQuery.setParameter(6, date1);
+            storedProcedureQuery.setParameter(7, date2);
             storedProcedureQuery.setParameter(8, Persentage);
 
             storedProcedureQuery.execute();
