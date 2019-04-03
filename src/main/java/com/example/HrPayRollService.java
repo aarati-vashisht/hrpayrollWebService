@@ -594,7 +594,7 @@ public class HrPayRollService {
         return map;
     }
 
-    public HashMap<String, String> AddSchool(String QueryType, String SchoolID, String ClassName, String BoardName, String SchoolName, String StartDate,String EndDate,Float Persentage) {
+    public HashMap<String, String> AddSchool(String QueryType, String SchoolID, String ClassName, String BoardName, String SchoolName, String StartDate, String EndDate, Float Persentage) {
 
 
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("schoolprocedure");
@@ -634,7 +634,7 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> UpdateSchool(String QueryType, Integer SchoolID, String ClassName, String BoardName, String SchoolName, String StartDate,String EndDate,Float Persentage) {
+    public HashMap<String, String> UpdateSchool(String QueryType, Integer SchoolID, String ClassName, String BoardName, String SchoolName, String StartDate, String EndDate, Float Persentage) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("schoolprocedure");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -671,7 +671,7 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> DeleteSchool(String QueryType, Integer SchoolID, String ClassName, String BoardName, String SchoolName, String StartDate,String EndDate,Float Persentage) {
+    public HashMap<String, String> DeleteSchool(String QueryType, Integer SchoolID, String ClassName, String BoardName, String SchoolName, String StartDate, String EndDate, Float Persentage) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("schoolprocedure");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -707,7 +707,7 @@ public class HrPayRollService {
         return map;
     }
 
-    public HashMap<String, String> AddGraduation(String QueryType, String GraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+    public HashMap<String, String> AddGraduation(String QueryType, String GraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate, String EndDate, Float Persentage) {
 
 
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("graduationprocedure");
@@ -747,7 +747,7 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> UpdateGraduation(String QueryType, Integer GraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+    public HashMap<String, String> UpdateGraduation(String QueryType, Integer GraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate, String EndDate, Float Persentage) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("graduationprocedure");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -784,7 +784,7 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> DeleteGraduation(String QueryType, Integer GraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+    public HashMap<String, String> DeleteGraduation(String QueryType, Integer GraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate, String EndDate, Float Persentage) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("graduationprocedure");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -821,7 +821,7 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> AddPostGraduation(String QueryType, String GraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+    public HashMap<String, String> AddPostGraduation(String QueryType, String GraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate, String EndDate, Float Persentage) {
 
 
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("postGraduationprocedure");
@@ -861,7 +861,7 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> UpdatePostGraduation(String QueryType, Integer PostGraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+    public HashMap<String, String> UpdatePostGraduation(String QueryType, Integer PostGraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate, String EndDate, Float Persentage) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("postGraduationprocedure");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -898,7 +898,7 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> DeletePostGraduation(String QueryType, Integer PostGraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+    public HashMap<String, String> DeletePostGraduation(String QueryType, Integer PostGraduationID, String CourseName, String UniversityName, String CollegeName, String StartDate, String EndDate, Float Persentage) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("postGraduationprocedure");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -935,7 +935,7 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> AddOtherEduQualifiaction(String QueryType, String otherEduQualificationTableID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+    public HashMap<String, String> AddOtherEduQualifiaction(String QueryType, String otherEduQualificationTableID, String CourseName, String UniversityName, String CollegeName, String StartDate, String EndDate, Float Persentage) {
 
 
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("otherEduprocedure");
@@ -975,7 +975,7 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> UpdateOtherEduQualifiaction(String QueryType, Integer otherEduQualificationTableID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+    public HashMap<String, String> UpdateOtherEduQualifiaction(String QueryType, Integer otherEduQualificationTableID, String CourseName, String UniversityName, String CollegeName, String StartDate, String EndDate, Float Persentage) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("otherEduprocedure");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -1012,7 +1012,7 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> DeleteOtherEduQualifiaction(String QueryType, Integer otherEduQualificationTableID, String CourseName, String UniversityName, String CollegeName, String StartDate,String EndDate,Float Persentage) {
+    public HashMap<String, String> DeleteOtherEduQualifiaction(String QueryType, Integer otherEduQualificationTableID, String CourseName, String UniversityName, String CollegeName, String StartDate, String EndDate, Float Persentage) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("otherEduprocedure");
         try {
             storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -1045,9 +1045,9 @@ public class HrPayRollService {
             ex.printStackTrace();
         }
         map.put("Status", "Failure");
-=======
-    //get all employee details and get employee details by employee id//
+        return map;
 
+    }
 
     public List<EmployeeBasicDetails> GetAllEmolyeeDetails() {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getEmployeeDetails", "resultMapping");
@@ -1063,6 +1063,7 @@ public class HrPayRollService {
         }
         return null;
     }
+
     public List<EmployeeBasicDetails> GetEmolyeeDetail(String QueryType, Integer E_ID) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getEmployeeDetails", "resultMapping");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
@@ -1073,10 +1074,10 @@ public class HrPayRollService {
     }
 
 
-
-
-    public HashMap<String, String> SaveAddress(String QueryType, String Address, String City, String State, String Country, String Pin_code, String Address_Status,
-                                               String Contact_No, String Email_ID, String Emergency_contact_person, String Emergency_contact_number, Integer eid, Integer A_ID) {
+    public HashMap<String, String> SaveAddress(String QueryType, String Address, String City, String State, String
+            Country, String Pin_code, String Address_Status,
+                                               String Contact_No, String Email_ID, String Emergency_contact_person, String
+                                                       Emergency_contact_number, Integer eid, Integer A_ID) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterAddressBook");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
@@ -1111,8 +1112,11 @@ public class HrPayRollService {
         map.put("STATUS", output);
         return map;
     }
-    public HashMap<String, String> UpdateAddress(String QueryType, String Address, String City, String State, String Country, String Pin_code, String Address_Status,
-                                               String Contact_No, String Email_ID, String Emergency_contact_person, String Emergency_contact_number, Integer eid, Integer A_ID) {
+
+    public HashMap<String, String> UpdateAddress(String QueryType, String Address, String City, String
+            State, String Country, String Pin_code, String Address_Status,
+                                                 String Contact_No, String Email_ID, String Emergency_contact_person, String
+                                                         Emergency_contact_number, Integer eid, Integer A_ID) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterAddressBook");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
@@ -1148,8 +1152,10 @@ public class HrPayRollService {
         return map;
     }
 
-    public HashMap<String, String> DeleteAddress(String QueryType, String Address, String City, String State, String Country, String Pin_code, String Address_Status,
-                                                 String Contact_No, String Email_ID, String Emergency_contact_person, String Emergency_contact_number, Integer eid, Integer A_ID) {
+    public HashMap<String, String> DeleteAddress(String QueryType, String Address, String City, String
+            State, String Country, String Pin_code, String Address_Status,
+                                                 String Contact_No, String Email_ID, String Emergency_contact_person, String
+                                                         Emergency_contact_number, Integer eid, Integer A_ID) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterAddressBook");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
@@ -1186,7 +1192,8 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> saveProfessionQualification(String QueryType, String Institute, String Course, String Start_Date, String End_Date, Integer Q_id)  throws ParseException  {
+    public HashMap<String, String> saveProfessionQualification(String QueryType, String Institute, String
+            Course, String Start_Date, String End_Date, Integer Q_id) throws ParseException {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("ProfessionalQualification");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
@@ -1211,7 +1218,9 @@ public class HrPayRollService {
         map.put("STATUS", output);
         return map;
     }
-    public HashMap<String, String> upadteProfessionQualification(String QueryType, String Institute, String Course, String Start_Date, String End_Date, Integer Q_id)  throws ParseException  {
+
+    public HashMap<String, String> upadteProfessionQualification(String QueryType, String Institute, String
+            Course, String Start_Date, String End_Date, Integer Q_id) throws ParseException {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("ProfessionalQualification");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
@@ -1224,7 +1233,7 @@ public class HrPayRollService {
         Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(Start_Date);
         Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(End_Date);
 
-            storedProcedureQuery.setParameter(1, "UPDATE");
+        storedProcedureQuery.setParameter(1, "UPDATE");
         storedProcedureQuery.setParameter(2, Institute);
         storedProcedureQuery.setParameter(3, Course);
         storedProcedureQuery.setParameter(4, date1);
@@ -1236,7 +1245,9 @@ public class HrPayRollService {
         map.put("STATUS", output);
         return map;
     }
-    public HashMap<String, String> DeleteProfessionQualification(String QueryType, String Institute, String Course, String Start_Date, String End_Date, Integer Q_id)  throws ParseException  {
+
+    public HashMap<String, String> DeleteProfessionQualification(String QueryType, String Institute, String
+            Course, String Start_Date, String End_Date, Integer Q_id) throws ParseException {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("ProfessionalQualification");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
