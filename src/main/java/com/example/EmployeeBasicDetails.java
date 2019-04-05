@@ -266,4 +266,5 @@ public class EmployeeBasicDetails {
     public void setEmployeeIsDeleted(Boolean employeeIsDeleted) {
         EmployeeIsDeleted = employeeIsDeleted;
     }
+
 }
