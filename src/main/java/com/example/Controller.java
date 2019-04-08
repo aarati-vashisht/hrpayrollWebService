@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
@@ -25,11 +26,11 @@ public class Controller {
                 insertBody.get("CreatedBy"),
                 insertBody.get("UpdatedBy"),
                 Integer.valueOf(insertBody.get("CountryID")),
-                insertBody.get("Description"));
+                insertBody.get("Description"),
+                Integer.valueOf(insertBody.get("userID")));
 
 
     }
-
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/UpdateState", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> UpdateState(@RequestBody HashMap<String, String> updateBody) {
@@ -38,7 +39,8 @@ public class Controller {
                 updateBody.get("UpdatedBy"),
                 Integer.valueOf(updateBody.get("CountryID")),
                 Integer.valueOf(updateBody.get("StateID")),
-                updateBody.get("Description"));
+                updateBody.get("Description"),
+                Integer.valueOf(updateBody.get("userID")));
         //////new commit
 ///comitted by ankit
     }
@@ -46,7 +48,8 @@ public class Controller {
     @PostMapping(value = "/DeleteState", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> DeleteState(@RequestBody HashMap<String, String> deleteBody) {
         return hrPayRollService.DeleteState(
-                Integer.valueOf(deleteBody.get("StateID")));
+                Integer.valueOf(deleteBody.get("StateID")),
+                Integer.valueOf(deleteBody.get("userID")));
 
     }
 
@@ -60,7 +63,8 @@ public class Controller {
                 insertCityBody.get("CreatedBy"),
                 insertCityBody.get("UpdatedBy"),
                 Integer.valueOf(insertCityBody.get("StateID")),
-        insertCityBody.get("Description"));
+                insertCityBody.get("Description"),
+                Integer.valueOf(insertCityBody.get("userID")));
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/UpdateCity", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -71,7 +75,8 @@ public class Controller {
                 upadteCityBody.get("UpdatedBy"),
                 Integer.valueOf(upadteCityBody.get("StateID")),
                 Integer.valueOf(upadteCityBody.get("CityID")),
-                upadteCityBody.get("Description"));
+                upadteCityBody.get("Description"),
+                Integer.valueOf(upadteCityBody.get("userID")));
 
 
     }
@@ -79,9 +84,47 @@ public class Controller {
     @PostMapping(value = "/DeleteCity", produces = MediaType.APPLICATION_JSON_VALUE)
 
     public HashMap<String, String> DeleteCity(@RequestBody HashMap<String, String> deleteCityBody) {
-        return hrPayRollService.DeleteCity(Integer.valueOf(deleteCityBody.get("CityID")));
+        return hrPayRollService.DeleteCity(Integer.valueOf(deleteCityBody.get("CityID")),
+                Integer.valueOf(deleteCityBody.get("userID")));
 
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/AddPostalCode", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HashMap<String, String> AddPostalCode(@RequestBody HashMap<String, String> insertCityBody) {
+        return hrPayRollService.AddPostalCode(
+                Integer.valueOf(insertCityBody.get("postalCode")),
+                insertCityBody.get("CreatedBy"),
+                insertCityBody.get("UpdatedBy"),
+                insertCityBody.get("Description"),
+                Integer.valueOf(insertCityBody.get("CityID")),
+                Integer.valueOf(insertCityBody.get("userID"))
+                );
+    }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/UpdatePostalCode", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HashMap<String, String> UpdatePostalCode(@RequestBody HashMap<String, String> upadteCityBody) {
+        return hrPayRollService.UpdatePostalCode(
+                Integer.valueOf(upadteCityBody.get("pid")),
+                Integer.valueOf(upadteCityBody.get("postalCode")),
+                upadteCityBody.get("CreatedBy"),
+                upadteCityBody.get("UpdatedBy"),
+                upadteCityBody.get("Description"),
+                Integer.valueOf(upadteCityBody.get("CityID")),
+                Integer.valueOf(upadteCityBody.get("userID")));
+
+
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/DeletePostalCode", produces = MediaType.APPLICATION_JSON_VALUE)
+
+    public HashMap<String, String> DeletePostalCode(@RequestBody HashMap<String, String> deletePostal) {
+        return hrPayRollService.DeletePostalCode(Integer.valueOf(deletePostal.get("pid")),
+                Integer.valueOf(deletePostal.get("userID")));
+
+    }
+
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/AddCountry")
     public HashMap<String, String> AddCountry(@RequestBody HashMap<String, String> loginBody) {
@@ -89,9 +132,8 @@ public class Controller {
                 loginBody.get("CountryName"),
                 loginBody.get("CountryCode"),
                 loginBody.get("CreatedBy"),
-                loginBody.get("UpdatedBy"),loginBody.get("Description")
-
-        );
+                loginBody.get("UpdatedBy"),loginBody.get("Description"),
+                Integer.valueOf(loginBody.get("userID")));
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -103,16 +145,16 @@ public class Controller {
                 loginBody.get("CountryCode"),
                 loginBody.get("CreatedBy"),
                 loginBody.get("UpdatedBy"),
-                loginBody.get("Description")
-
-        );
+                loginBody.get("Description"),
+                Integer.valueOf(loginBody.get("userID")));
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/DeleteCountry")
     public HashMap<String, String> DeleteCountry(@RequestBody HashMap<String, String> loginBody) {
         return hrPayRollService.DeleteCountry(
-                Integer.valueOf(loginBody.get("CountryID")));
+                Integer.valueOf(loginBody.get("CountryID")),
+                Integer.valueOf(loginBody.get("userID")));
 
         ////Commit BY Lalit
     }
@@ -135,7 +177,8 @@ public class Controller {
                 saveBody.get("E_Image"),
                 saveBody.get("E_EmployementType"),
                 saveBody.get("CreatedBy"),
-                saveBody.get("UpdatedBy"));
+                saveBody.get("UpdatedBy"),
+                Integer.valueOf(saveBody.get("userID")));
 
     }
     ///Save Employee data////
@@ -149,7 +192,8 @@ public class Controller {
                 loginBody.get("LocationCode"),
                 loginBody.get("LocationDescription"),
                 loginBody.get("CreatedBy"),
-                loginBody.get("UpdatedBy")
+                loginBody.get("UpdatedBy"),
+                Integer.valueOf(loginBody.get("userID"))
         );
     }
 
@@ -163,7 +207,8 @@ public class Controller {
                 updateLocation.get("LocationCode"),
                 updateLocation.get("LocationDescription"),
                 updateLocation.get("CreatedBy"),
-                updateLocation.get("UpdatedBy")
+                updateLocation.get("UpdatedBy"),
+                Integer.valueOf(updateLocation.get("userID"))
 
         );
     }
@@ -172,7 +217,8 @@ public class Controller {
     @PostMapping(value = "/DeleteLocation")
     public HashMap<String, String> DeleteLocation(@RequestBody HashMap<String, String> deleteBody) {
         return hrPayRollService.DeleteLocation(
-                Integer.valueOf(deleteBody.get("LocationID")));
+                Integer.valueOf(deleteBody.get("LocationID")),
+                Integer.valueOf(deleteBody.get("userID")));
 
     }
 
@@ -185,8 +231,9 @@ public class Controller {
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(name = "/GetEmolyeeDetail")
     public List<EmployeeBasicDetails> GetEmolyeeDetail(@RequestBody HashMap<String, String> Employee) {
-        return hrPayRollService.GetEmolyeeDetail(Employee.get("QueryType"),
-                Integer.valueOf(Employee.get("E_ID")));
+        return hrPayRollService.GetEmolyeeDetail(
+                Integer.valueOf(Employee.get("E_ID")),
+                Integer.valueOf(Employee.get("userID")));
     }
 
     ///insert upadte and delete data for address book///
@@ -204,7 +251,8 @@ public class Controller {
                 saveBody.get("Email_ID"),
                 saveBody.get("Emergency_contact_person"),
                 saveBody.get("Emergency_contact_number"),
-                Integer.valueOf(saveBody.get("eid")));
+                Integer.valueOf(saveBody.get("eid")),
+                Integer.valueOf(saveBody.get("userID")));
 
     }
 
@@ -223,7 +271,8 @@ public class Controller {
                 updateBody.get("Emergency_contact_person"),
                 updateBody.get("Emergency_contact_number"),
                 Integer.valueOf(updateBody.get("eid")),
-                Integer.valueOf(updateBody.get("A_ID")));
+                Integer.valueOf(updateBody.get("A_ID")),
+                Integer.valueOf(updateBody.get("userID")));
 
     }
 
@@ -231,7 +280,8 @@ public class Controller {
     @PostMapping(value = "/DeleteAddress", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> DeleteAddress(@RequestBody HashMap<String, String> deleteAddress) throws ParseException {
         return hrPayRollService.DeleteAddress(
-                Integer.valueOf(deleteAddress.get("A_ID")));
+                Integer.valueOf(deleteAddress.get("A_ID")),
+                Integer.valueOf(deleteAddress.get("userID")));
 
     }
 
@@ -246,7 +296,8 @@ public class Controller {
                 saveProfessionalQualification.get("Start_Date"),
                 saveProfessionalQualification.get("End_Date"),
                 saveProfessionalQualification.get("CreateBy"),
-                saveProfessionalQualification.get("UpadtedBy"));
+                saveProfessionalQualification.get("UpadtedBy"),
+                Integer.valueOf(saveProfessionalQualification.get("userID")));
 
     }
 
@@ -260,7 +311,8 @@ public class Controller {
                 saveProfessionalQualification.get("End_Date"),
                 Integer.valueOf(saveProfessionalQualification.get("Q_id")),
                 saveProfessionalQualification.get("CreatedBy"),
-                saveProfessionalQualification.get("UpdatedBy"));
+                saveProfessionalQualification.get("UpdatedBy"),
+                Integer.valueOf(saveProfessionalQualification.get("userID")));
 
     }
 
@@ -268,7 +320,8 @@ public class Controller {
     @PostMapping(value = "/DeleteProfessionQualification", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> DeleteProfessionQualification(@RequestBody HashMap<String, String> saveProfessionalQualification) throws ParseException {
         return hrPayRollService.DeleteProfessionQualification(
-                Integer.valueOf(saveProfessionalQualification.get("Q_id")));
+                Integer.valueOf(saveProfessionalQualification.get("Q_id")),
+                Integer.valueOf(saveProfessionalQualification.get("userID")));
 
     }
 
@@ -279,7 +332,10 @@ public class Controller {
                 Integer.valueOf(saveBody.get("LocationID")),
                 saveBody.get("DepartmentName"),
                 saveBody.get("DepartmentCode"),
-                saveBody.get("Description")
+                saveBody.get("Description"),
+                saveBody.get("CreatedBy"),
+                saveBody.get("UpdatedBy"),
+                Integer.valueOf(saveBody.get("userID"))
 
         );
     }
@@ -287,12 +343,15 @@ public class Controller {
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/UpdateDepartment")
     public HashMap<String, String> UpdateDepartment(@RequestBody HashMap<String, String> updateBody) {
-        return hrPayRollService.UpdateDepartment(updateBody.get("QueryType"),
+        return hrPayRollService.UpdateDepartment(
                 Integer.valueOf(updateBody.get("DepartmentID")),
                 Integer.valueOf(updateBody.get("LocationID")),
                 updateBody.get("DepartmentName"),
                 updateBody.get("DepartmentCode"),
-                updateBody.get("Description")
+                updateBody.get("Description"),
+                updateBody.get("CreatedBy"),
+                updateBody.get("UpdatedBy"),
+                Integer.valueOf(updateBody.get("userID"))
 
         );
     }
@@ -301,11 +360,12 @@ public class Controller {
     @PostMapping(value = "/DeleteDepartment")
     public HashMap<String, String> DeleteDepartment(@RequestBody HashMap<String, String> deleteBody) {
         return hrPayRollService.DeleteDepartment(
-                Integer.valueOf(deleteBody.get("DepartmentID")));
+                Integer.valueOf(deleteBody.get("DepartmentID")),
+                Integer.valueOf(deleteBody.get("userID")));
 
     }
 
-    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/AddDesignation")
     public HashMap<String, String> AddDesignation(@RequestBody HashMap<String, String> saveBody) {
         return hrPayRollService.AddDesignation(
@@ -314,10 +374,11 @@ public class Controller {
                 saveBody.get("DesignationCode"),
                 saveBody.get("Description"),
                 saveBody.get("CreatedBy"),
-                saveBody.get("UpdatedBy"));
+                saveBody.get("UpdatedBy"),
+                Integer.valueOf(saveBody.get("userID")));
     }
 
-    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/UpdateDesignation")
     public HashMap<String, String> UpdateDesignation(@RequestBody HashMap<String, String> updateBody) {
         return hrPayRollService.UpdateDesignation(
@@ -327,17 +388,19 @@ public class Controller {
                 updateBody.get("DesignationCode"),
                 updateBody.get("Description"),
                 updateBody.get("CreatedBy"),
-                updateBody.get("UpdatedBy"));
+                updateBody.get("UpdatedBy"),
+                Integer.valueOf(updateBody.get("userID")));
     }
 
-    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/DeleteDesignation")
     public HashMap<String, String> DeleteDesignation(@RequestBody HashMap<String, String> deleteBody) {
         return hrPayRollService.DeleteDesignation(
-                Integer.valueOf(deleteBody.get("DepartmentID")));
+                Integer.valueOf(deleteBody.get("DepartmentID")),
+                Integer.valueOf(deleteBody.get("userID")));
 
     }
-    @CrossOrigin(origins = "http://localhost:4200")
+   // @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/AddSchool")
     public HashMap<String, String> AddSchool(@RequestBody HashMap<String, String> saveBody) throws ParseException{
         return hrPayRollService.AddSchool(
@@ -348,7 +411,8 @@ public class Controller {
                 saveBody.get("EndDate"),
                 saveBody.get("Percentage"),
                 saveBody.get("CreatedBy"),
-                saveBody.get("UpdatedBy"));
+                saveBody.get("Updatedby"),
+                Integer.valueOf(saveBody.get("userID")));
 
     }
 
@@ -364,14 +428,16 @@ public class Controller {
                 updateBody.get("EndDate"),
                 updateBody.get("Persentage"),
                 updateBody.get("CreatedBy"),
-                updateBody.get("UpdatedBy"));
+                updateBody.get("UpdatedBy"),
+                Integer.valueOf(updateBody.get("userID")));
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/DeleteSchool")
     public HashMap<String, String> DeleteSchool(@RequestBody HashMap<String, String> deleteBody) {
         return hrPayRollService.DeleteSchool(
-                Integer.valueOf(deleteBody.get("SchoolID")));
+                Integer.valueOf(deleteBody.get("SchoolID")),
+                Integer.valueOf(deleteBody.get("userID")));
 
     }
 
@@ -383,9 +449,10 @@ public class Controller {
                 saveBody.get("CollegeName"),
                 saveBody.get("StartDate"),
                 saveBody.get("EndDate"),
-                Float.valueOf(saveBody.get("Persentage"))
-
-        );
+                saveBody.get("Percentage"),
+                saveBody.get("CreatedBy"),
+                saveBody.get("UpdatedBy"),
+                Integer.valueOf(saveBody.get("userID")));
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -398,16 +465,19 @@ public class Controller {
                 updateBody.get("CollegeName"),
                 updateBody.get("StartDate"),
                 updateBody.get("EndDate"),
-                Float.valueOf(updateBody.get("Persentage"))
-
+                updateBody.get("Percentage"),
+                updateBody.get("CreatedBy"),
+                updateBody.get("UpdatedBy"),
+                Integer.valueOf(updateBody.get("userID"))
         );
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/DeleteGraduation")
     public HashMap<String, String> DeleteGraduation(@RequestBody HashMap<String, String> deleteBody) throws ParseException {
         return hrPayRollService.DeleteGraduation(
-                Integer.valueOf(deleteBody.get("GraduationID")));
+                Integer.valueOf(deleteBody.get("GraduationID")),
+                Integer.valueOf(deleteBody.get("userID")));
 
     }
 
@@ -420,7 +490,10 @@ public class Controller {
                 saveBody.get("CollegeName"),
                 saveBody.get("StartDate"),
                 saveBody.get("EndDate"),
-                Float.valueOf(saveBody.get("Persentage"))
+                saveBody.get("Percentage"),
+                saveBody.get("CreatedBy"),
+                saveBody.get("UpdatedBy"),
+                Integer.valueOf(saveBody.get("userID"))
 
 
         );
@@ -436,7 +509,10 @@ public class Controller {
                 updateBody.get("CollegeName"),
                 updateBody.get("StartDate"),
                 updateBody.get("EndDate"),
-                Float.valueOf(updateBody.get("Persentage"))
+                updateBody.get("Percentage"),
+                updateBody.get("CreatedBy"),
+                updateBody.get("UpdatedBy"),
+                Integer.valueOf(updateBody.get("userID"))
 
         );
     }
@@ -445,7 +521,8 @@ public class Controller {
     @PostMapping(value = "/DeletePostGraduation")
     public HashMap<String, String> DeletePostGraduation(@RequestBody HashMap<String, String> deleteBody) throws ParseException{
         return hrPayRollService.DeletePostGraduation(
-                Integer.valueOf(deleteBody.get("PostGraduationID"))
+                Integer.valueOf(deleteBody.get("PostGraduationID")),
+                Integer.valueOf(deleteBody.get("userID"))
         );
 
     }
@@ -459,9 +536,10 @@ public class Controller {
                 saveBody.get("CollegeName"),
                 saveBody.get("StartDate"),
                 saveBody.get("EndDate"),
-                Float.valueOf(saveBody.get("Persentage"))
-
-
+                saveBody.get("Percentage"),
+                saveBody.get("CreatedBy"),
+                saveBody.get("UpdatedBy"),
+                Integer.valueOf(saveBody.get("userID"))
         );
     }
 
@@ -475,8 +553,10 @@ public class Controller {
                 updateBody.get("CollegeName"),
                 updateBody.get("StartDate"),
                 updateBody.get("EndDate"),
-                Float.valueOf(updateBody.get("Persentage"))
-
+                updateBody.get("Percentage"),
+                updateBody.get("CreatedBy"),
+                updateBody.get("UpdatedBy"),
+                Integer.valueOf(updateBody.get("userID"))
         );
     }
 
@@ -485,13 +565,7 @@ public class Controller {
     public HashMap<String, String> DeleteOtherEduQualifiaction(@RequestBody HashMap<String, String> deleteBody) throws ParseException{
         return hrPayRollService.DeleteOtherEduQualifiaction(
                 Integer.valueOf(deleteBody.get("otherEduQualificationTableID")),
-                deleteBody.get("CourseName"),
-                deleteBody.get("UniversityName"),
-                deleteBody.get("CollegeName"),
-                deleteBody.get("StartDate"),
-                deleteBody.get("EndDate"),
-                Float.valueOf(deleteBody.get("Persentage"))
-
+                Integer.valueOf(deleteBody.get("userID"))
         );
 
     }
