@@ -1,11 +1,11 @@
-package com.example;
+package com.example.ResponseData;
 
 import javax.persistence.*;
 
 @SqlResultSetMapping(
         name = "designationMapping",
         classes = {
-                @ConstructorResult(targetClass = com.example.DesignationData.class, columns = {
+                @ConstructorResult(targetClass = DesignationData.class, columns = {
                         @ColumnResult(name = "DesignationID", type = Integer.class),
                         @ColumnResult(name = "DepartmentID", type = Integer.class),
                         @ColumnResult(name = "DesignationCode", type = String.class),
