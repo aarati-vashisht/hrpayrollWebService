@@ -415,12 +415,18 @@ public class Controller {
                 deleteBody.get("UserID"));
 
     }
-
     @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/getLocation")
+    public List<LocationData> getLocation(@RequestBody HashMap<String, String> deleteBody) {
+        return hrPayRollService.getLocation(
+                deleteBody.get("UserID"));
+
+    }
+   // @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/getDepartment")
     public List<DepartmentData> getDepartment(@RequestBody HashMap<String, String> deleteBody) {
         return hrPayRollService.getDepartment(
-                deleteBody.get("UserID"),deleteBody.get("DesignationID"));
+                deleteBody.get("UserID"),deleteBody.get("LocationID"));
 
     }
     //@CrossOrigin(origins = "http://localhost:4200")
