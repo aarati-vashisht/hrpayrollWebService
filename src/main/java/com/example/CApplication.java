@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication(scanBasePackages={
-		"com.example","com.example.Controller"})
+		"com.example","com.example.Controller","com.example.ResponseData"})
 @EnableJpaRepositories("com.example")
 public class CApplication {
 

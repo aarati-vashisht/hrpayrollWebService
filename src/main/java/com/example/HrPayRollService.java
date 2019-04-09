@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.ResponseData.StateData;
 import org.springframework.context.annotation.Description;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.stereotype.Service;
@@ -1527,6 +1528,15 @@ public class HrPayRollService {
         storedProcedureQuery.setParameter(2, designationID);
         return storedProcedureQuery.getResultList();
     }
+
+
+    public List<StateData> getState(String userID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getState", "StateMapping");
+        storedProcedureQuery.registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.setParameter(1, userID);
+        return storedProcedureQuery.getResultList();
+    }
+
 }
 
 

@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.ResponseData.StateData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -420,6 +421,13 @@ public class Controller {
     public List<DepartmentData> getDepartment(@RequestBody HashMap<String, String> deleteBody) {
         return hrPayRollService.getDepartment(
                 deleteBody.get("UserID"),deleteBody.get("DesignationID"));
+
+    }
+    //@CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/getState")
+    public List<StateData> getState(@RequestBody HashMap<String, String> getBody) {
+        return hrPayRollService.getState(
+                getBody.get("UserID"));
 
     }
 
