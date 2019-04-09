@@ -1512,6 +1512,21 @@ public class HrPayRollService {
     }
 
 
+    public List<DesignationData> getDesignation(String userID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getDesignation", "designationMapping");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.setParameter(1, userID);
+        return storedProcedureQuery.getResultList();
+    }
+
+    public List<DepartmentData> getDepartment(String userID, String designationID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getDepartment", "DepartmentMapping");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.setParameter(1, userID);
+        storedProcedureQuery.setParameter(2, designationID);
+        return storedProcedureQuery.getResultList();
+    }
 }
 
 
