@@ -1,13 +1,7 @@
-package com.example;
-
-import org.springframework.format.annotation.DateTimeFormat;
-import sun.util.calendar.BaseCalendar;
+package com.example.ResponseData;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.io.Serializable;
 import java.util.Date;
-import java.time.DateTimeException;
 
 @SqlResultSetMapping(
         name = "resultMapping",

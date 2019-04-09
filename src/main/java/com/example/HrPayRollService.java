@@ -1,22 +1,17 @@
 package com.example;
 
-import com.example.ResponseData.StateData;
-import org.springframework.context.annotation.Description;
-import org.springframework.data.annotation.CreatedBy;
+import com.example.ResponseData.*;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
-import static com.oracle.jrockit.jfr.ContentType.Address;
 
 @Service
 public class HrPayRollService {
@@ -1539,7 +1534,7 @@ public class HrPayRollService {
 
     public List<StateData> getState(String userID) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getState", "StateMapping");
-        storedProcedureQuery.registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.setParameter(1, userID);
         return storedProcedureQuery.getResultList();
     }

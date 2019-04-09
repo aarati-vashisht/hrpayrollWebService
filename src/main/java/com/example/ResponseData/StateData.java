@@ -9,10 +9,11 @@ import javax.persistence.*;
                         @ColumnResult(name = "CountryID", type = Integer.class),
                         @ColumnResult(name = "StateID", type = Integer.class),
                         @ColumnResult(name = "StateName", type = String.class),
-                        @ColumnResult(name = "Description", type = String.class)
+                        @ColumnResult(name = "Description", type = String.class),
+                        @ColumnResult(name = "CountryName", type = String.class)
                 })
         })
-
+@Entity
 public class StateData {
 
     @Id
@@ -25,6 +26,16 @@ public class StateData {
     @Column(name = "Description")
     String Description;
 
+    public String getCountryName() {
+        return CountryName;
+    }
+
+    public void setCountryName(String countryName) {
+        CountryName = countryName;
+    }
+
+    @Column(name = "CountryName")
+    String CountryName;
     public int getCountryID() {
         return CountryID;
     }
@@ -57,10 +68,10 @@ public class StateData {
         Description = description;
     }
 
-    public StateData(int CountryID, int StateID, String StateName, String Description) {
+    public StateData(int CountryID, int StateID, String StateName, String Description, String CountryName) {
         this.CountryID = CountryID;
         this.StateID = StateID;
         this.StateName = StateName;
-        this.Description = Description;
+        this.Description = Description;  this.CountryName = CountryName;
     }
 }
