@@ -10,7 +10,6 @@ import javax.persistence.*;
                         @ColumnResult(name = "LocationDescription", type = String.class),
                         @ColumnResult(name = "LocationCode", type = String.class),
                         @ColumnResult(name = "LocationName", type = String.class)
-
                 })
         })
 @Entity
@@ -18,53 +17,47 @@ public class LocationData {
 
 
     @Id
-    @Column(name = "LocationID")
-    int LocationID;
+    int ID;
+    String Description;
+    String Code;
+    String Name;
 
-    public int getLocationID() {
-        return LocationID;
+    public LocationData(int ID, String description, String code, String name) {
+        this.ID = ID;
+        Description = description;
+        Code = code;
+        Name = name;
     }
 
-    public void setLocationID(int locationID) {
-        LocationID = locationID;
+    public int getID() {
+        return ID;
     }
 
-    public String getLocationDescription() {
-        return LocationDescription;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    public void setLocationDescription(String locationDescription) {
-        LocationDescription = locationDescription;
+    public String getDescription() {
+        return Description;
     }
 
-    public String getLocationCode() {
-        return LocationCode;
+    public void setDescription(String description) {
+        Description = description;
     }
 
-    public void setLocationCode(String locationCode) {
-        LocationCode = locationCode;
+    public String getCode() {
+        return Code;
     }
 
-    public String getLocationName() {
-        return LocationName;
+    public void setCode(String code) {
+        Code = code;
     }
 
-    public void setLocationName(String locationName) {
-        LocationName = locationName;
+    public String getName() {
+        return Name;
     }
 
-    @Column(name = "LocationDescription")
-    String LocationDescription;
-
-    @Column(name = "LocationCode")
-    String LocationCode;
-    @Column(name = "LocationName")
-    String LocationName;
-
-    public LocationData(int LocationID, String LocationDescription, String LocationCode, String LocationName) {
-        this.LocationID = LocationID;
-        this.LocationDescription = LocationDescription;
-        this.LocationCode = LocationCode;
-        this.LocationName = LocationName;
+    public void setName(String name) {
+        Name = name;
     }
 }

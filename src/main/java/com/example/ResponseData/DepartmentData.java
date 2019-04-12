@@ -18,15 +18,24 @@ public class DepartmentData {
 
 
     @Id
-    @Column(name = "DepartmentID")
-    int DepartmentID;
+    int ID;
+    int LocationID;
+    String Code;
+    String Name;
 
-    public int getDepartmentID() {
-        return DepartmentID;
+    public DepartmentData(int ID, int locationID, String code, String name) {
+        this.ID = ID;
+        LocationID = locationID;
+        Code = code;
+        Name = name;
     }
 
-    public void setDepartmentID(int departmentID) {
-        DepartmentID = departmentID;
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public int getLocationID() {
@@ -37,33 +46,19 @@ public class DepartmentData {
         LocationID = locationID;
     }
 
-    public String getDepartmentCode() {
-        return DepartmentCode;
+    public String getCode() {
+        return Code;
     }
 
-    public void setDepartmentCode(String departmentCode) {
-        DepartmentCode = departmentCode;
+    public void setCode(String code) {
+        Code = code;
     }
 
-    public String getDepartmentName() {
-        return DepartmentName;
+    public String getName() {
+        return Name;
     }
 
-    public void setDepartmentName(String departmentName) {
-        DepartmentName = departmentName;
-    }
-
-    @Column(name = "LocationID")
-    int LocationID;
-    @Column(name = "DepartmentCode")
-    String DepartmentCode;
-    @Column(name = "DepartmentName")
-    String DepartmentName;
-
-    public DepartmentData(int DepartmentID, int LocationID, String DepartmentCode, String DepartmentName) {
-        this.DepartmentID = DepartmentID;
-        this.LocationID = LocationID;
-        this.DepartmentCode = DepartmentCode;
-        this.DepartmentName = DepartmentName;
+    public void setName(String name) {
+        Name = name;
     }
 }

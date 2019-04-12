@@ -17,13 +17,9 @@ import javax.persistence.*;
 public class StateData {
 
     @Id
-    @Column(name = "CountryID")
     int CountryID;
-    @Column(name = "StateID")
     int StateID;
-    @Column(name = "StateName")
     String StateName;
-    @Column(name = "Description")
     String Description;
 
     public String getCountryName() {
