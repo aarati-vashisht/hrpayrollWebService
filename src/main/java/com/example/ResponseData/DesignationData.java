@@ -18,17 +18,24 @@ public class DesignationData {
 
 
     @Id
-    @Column(name = "DesignationID")
-    int DesignationID;
-    @Column(name = "DepartmentID")
+    int ID;
     int DepartmentID;
+    String Code;
+    String Name;
 
-    public int getDesignationID() {
-        return DesignationID;
+    public DesignationData(int ID, int departmentID, String code, String name) {
+        this.ID = ID;
+        DepartmentID = departmentID;
+        Code = code;
+        Name = name;
     }
 
-    public void setDesignationID(int designationID) {
-        DesignationID = designationID;
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public int getDepartmentID() {
@@ -39,31 +46,19 @@ public class DesignationData {
         DepartmentID = departmentID;
     }
 
-    public String getDesignationCode() {
-        return DesignationCode;
+    public String getCode() {
+        return Code;
     }
 
-    public void setDesignationCode(String designationCode) {
-        DesignationCode = designationCode;
+    public void setCode(String code) {
+        Code = code;
     }
 
-    public String getDesignationName() {
-        return DesignationName;
+    public String getName() {
+        return Name;
     }
 
-    public void setDesignationName(String designationName) {
-        DesignationName = designationName;
-    }
-
-    @Column(name = "DesignationCode")
-    String DesignationCode;
-    @Column(name = "DesignationName")
-    String DesignationName;
-
-    public DesignationData(int DesignationID, int DepartmentID, String DesignationCode, String DesignationName) {
-        this.DesignationID = DesignationID;
-        this.DepartmentID = DepartmentID;
-        this.DesignationCode = DesignationCode;
-        this.DesignationName = DesignationName;
+    public void setName(String name) {
+        Name = name;
     }
 }
