@@ -6,10 +6,11 @@ import javax.persistence.*;
         name = "DepartmentMapping",
         classes = {
                 @ConstructorResult(targetClass = DepartmentData.class, columns = {
+
                         @ColumnResult(name = "DepartmentID", type = Integer.class),
-                        @ColumnResult(name = "LocationID", type = Integer.class),
                         @ColumnResult(name = "DepartmentCode", type = String.class),
-                        @ColumnResult(name = "DepartmentName", type = String.class)
+                        @ColumnResult(name = "DepartmentName", type = String.class),
+                        @ColumnResult(name = "Description", type = String.class),
 
                 })
         })
@@ -19,15 +20,15 @@ public class DepartmentData {
 
     @Id
     int ID;
-    int LocationID;
     String Code;
     String Name;
+    String Description;
 
-    public DepartmentData(int ID, int locationID, String code, String name) {
+    public DepartmentData(int ID, String code, String name, String description) {
         this.ID = ID;
-        LocationID = locationID;
         Code = code;
         Name = name;
+        Description = description;
     }
 
     public int getID() {
@@ -36,14 +37,6 @@ public class DepartmentData {
 
     public void setID(int ID) {
         this.ID = ID;
-    }
-
-    public int getLocationID() {
-        return LocationID;
-    }
-
-    public void setLocationID(int locationID) {
-        LocationID = locationID;
     }
 
     public String getCode() {
@@ -60,5 +53,13 @@ public class DepartmentData {
 
     public void setName(String name) {
         Name = name;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
     }
 }

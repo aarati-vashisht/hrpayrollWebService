@@ -24,23 +24,14 @@ public class PostalCodeData {
 
 
     @Id
-    @Column(name = "CountryID")
     int CountryID;
-    @Column(name = "CountryName")
     String CountryName;
-    @Column(name = "StateID")
     int StateID;
-    @Column(name = "StateName")
     String StateName;
-    @Column(name = "CityID")
     int CityID;
-    @Column(name = "CityName")
     String CityName;
-    @Column(name = "pID")
     int pID;
-    @Column(name = "postalCode")
     int postalCode;
-    @Column(name = "Description")
     String Description;
 
     public int getCountryID() {

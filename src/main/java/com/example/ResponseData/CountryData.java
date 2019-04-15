@@ -16,11 +16,8 @@ import javax.persistence.*;
 public class CountryData {
 
     @Id
-    @Column(name = "CountryID")
     int CountryID;
-    @Column(name = "CountryName")
     String  CountryName;
-    @Column(name = "CountryCode")
     String CountryCode;
 
     public CountryData(int CountryID, String CountryName, String CountryCode) {
