@@ -546,11 +546,11 @@ public class Controller {
     @PostMapping(value = "/AddGraduation")
     public HashMap<String, String> AddGraduation(@RequestBody HashMap<String, String> saveBody) throws ParseException {
         return hrPayRollService.AddGraduation(saveBody.get("Degree"),
-                saveBody.get("Specialization"),
-                saveBody.get("University"),
+                saveBody.get("specialization"),
+                saveBody.get("university"),
                 saveBody.get("StartDate"),
                 saveBody.get("EndDate"),
-                saveBody.get("Percentage"),
+                saveBody.get("percentage"),
                 saveBody.get("UpdatedBy"),
                 Integer.valueOf(saveBody.get("userID")));
     }
@@ -561,11 +561,11 @@ public class Controller {
         return hrPayRollService.UpdateGraduation(
                 Integer.valueOf(updateBody.get("GraduationID")),
                 updateBody.get("Degree"),
-                updateBody.get("Specialization"),
-                updateBody.get("University"),
+                updateBody.get("specialization"),
+                updateBody.get("university"),
                 updateBody.get("StartDate"),
                 updateBody.get("EndDate"),
-                updateBody.get("Percentage"),
+                updateBody.get("percentage"),
                 updateBody.get("UpdatedBy"),
                 Integer.valueOf(updateBody.get("userID"))
         );
@@ -580,37 +580,34 @@ public class Controller {
 
     }
 
+
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/AddPostGraduation")
     public HashMap<String, String> AddPostGraduation(@RequestBody HashMap<String, String> saveBody) throws ParseException {
         return hrPayRollService.AddPostGraduation(
                 saveBody.get("Degree"),
-                saveBody.get("Specialization"),
-                saveBody.get("University"),
+                saveBody.get("specialization"),
+                saveBody.get("university"),
                 saveBody.get("StartDate"),
                 saveBody.get("EndDate"),
-                saveBody.get("Percentage"),
+                saveBody.get("percentage"),
                 saveBody.get("UpdatedBy"),
-                Integer.valueOf(saveBody.get("userID"))
-
-
-        );
+                Integer.valueOf(saveBody.get("userID")));
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/UpdatePostGraduation")
     public HashMap<String, String> UpdatePostGraduation(@RequestBody HashMap<String, String> updateBody) throws ParseException {
         return hrPayRollService.UpdatePostGraduation(
                 Integer.valueOf(updateBody.get("PostGraduationID")),
                 updateBody.get("Degree"),
-                updateBody.get("Specialization"),
-                updateBody.get("University"),
+                updateBody.get("specialization"),
+                updateBody.get("university"),
                 updateBody.get("StartDate"),
                 updateBody.get("EndDate"),
-                updateBody.get("Percentage"),
+                updateBody.get("percentage"),
                 updateBody.get("UpdatedBy"),
                 Integer.valueOf(updateBody.get("userID"))
-
         );
     }
 
@@ -629,14 +626,13 @@ public class Controller {
     public HashMap<String, String> AddOtherEduQualifiaction(@RequestBody HashMap<String, String> saveBody) throws ParseException {
         return hrPayRollService.AddOtherEduQualifiaction(
                 saveBody.get("Degree"),
-                saveBody.get("Specialization"),
-                saveBody.get("University"),
+                saveBody.get("specialization"),
+                saveBody.get("university"),
                 saveBody.get("StartDate"),
                 saveBody.get("EndDate"),
-                saveBody.get("Percentage"),
+                saveBody.get("percentage"),
                 saveBody.get("UpdatedBy"),
-                Integer.valueOf(saveBody.get("userID"))
-        );
+                Integer.valueOf(saveBody.get("userID")));
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -645,11 +641,11 @@ public class Controller {
         return hrPayRollService.UpdateOtherEduQualifiaction(
                 Integer.valueOf(updateBody.get("otherEduQualificationTableID")),
                 updateBody.get("Degree"),
-                updateBody.get("Specialization"),
-                updateBody.get("University"),
+                updateBody.get("specialization"),
+                updateBody.get("university"),
                 updateBody.get("StartDate"),
                 updateBody.get("EndDate"),
-                updateBody.get("Percentage"),
+                updateBody.get("percentage"),
                 updateBody.get("UpdatedBy"),
                 Integer.valueOf(updateBody.get("userID"))
         );
@@ -678,7 +674,6 @@ public class Controller {
                 deleteBody.get("userID"),
                 deleteBody.get("DepartmentID")
         );
-
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -789,7 +784,28 @@ public class Controller {
                 getBody.get("userID"));
 
     }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/getCountryDropDown")
+    public List<CountryDropDown> getCountryDropDown(@RequestBody HashMap<String, String> getBody) {
+        return hrPayRollService.getCountryDropDown(
+                getBody.get("userID"));
 
+    }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/getStateDropDown")
+    public List<StateDropDown> getStateDropDown(@RequestBody HashMap<String, String> getBody) {
+        return hrPayRollService.getStateDropDown(
+                getBody.get("userID"));
+
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/getCityDropDown")
+    public List<CityDropDown> getCityDropDown(@RequestBody HashMap<String, String> getBody) {
+        return hrPayRollService.getCityDropDown(
+                getBody.get("userID"));
+
+    }
 
 
 }
