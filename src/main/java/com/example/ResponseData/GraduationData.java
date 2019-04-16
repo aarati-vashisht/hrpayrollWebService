@@ -22,20 +22,20 @@ public class GraduationData {
 
     @Id
     int GraduationId;
-    String Degree;
-    String Specialization;
-    String University;
-    Date StartDate;
-    Date EndDate;
+    String degree;
+    String specialization;
+    String university;
+    Date startdate;
+    Date enddate;
     Float percentage;
 
-    public GraduationData(int graduationId, String degree, String specialization, String university, Date startDate, Date endDate, Float percentage) {
+    public GraduationData(int graduationId, String degree, String specialization, String university, Date startdate, Date enddate, Float percentage) {
         GraduationId = graduationId;
-        Degree = degree;
-        Specialization = specialization;
-        University = university;
-        StartDate = startDate;
-        EndDate = endDate;
+        this.degree = degree;
+        this.specialization = specialization;
+        this.university = university;
+        this.startdate = startdate;
+        this.enddate = enddate;
         this.percentage = percentage;
     }
 
@@ -48,43 +48,43 @@ public class GraduationData {
     }
 
     public String getDegree() {
-        return Degree;
+        return degree;
     }
 
     public void setDegree(String degree) {
-        Degree = degree;
+        this.degree = degree;
     }
 
     public String getSpecialization() {
-        return Specialization;
+        return specialization;
     }
 
     public void setSpecialization(String specialization) {
-        Specialization = specialization;
+        this.specialization = specialization;
     }
 
     public String getUniversity() {
-        return University;
+        return university;
     }
 
     public void setUniversity(String university) {
-        University = university;
+        this.university = university;
     }
 
-    public Date getStartDate() {
-        return StartDate;
+    public Date getStartdate() {
+        return startdate;
     }
 
-    public void setStartDate(Date startDate) {
-        StartDate = startDate;
+    public void setStartdate(Date startdate) {
+        this.startdate = startdate;
     }
 
-    public Date getEndDate() {
-        return EndDate;
+    public Date getEnddate() {
+        return enddate;
     }
 
-    public void setEndDate(Date endDate) {
-        EndDate = endDate;
+    public void setEnddate(Date enddate) {
+        this.enddate = enddate;
     }
 
     public Float getPercentage() {
