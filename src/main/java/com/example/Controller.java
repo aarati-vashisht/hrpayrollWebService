@@ -182,7 +182,8 @@ public class Controller {
                 saveBody.get("E_Image"),
                 saveBody.get("E_EmployementType"),
                 saveBody.get("UpdatedBy"),
-                Integer.valueOf(saveBody.get("userID")));
+                Integer.valueOf(saveBody.get("userID")),
+                saveBody.get("E_Location"));
 
     }
     ///Save Employee data////
@@ -777,7 +778,7 @@ public class Controller {
 
     }
 
-   // @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/getAddressBook")
     public List<AddressBookData> getAddressBook(@RequestBody HashMap<String, String> getBody) {
         return hrPayRollService.getAddressBook(

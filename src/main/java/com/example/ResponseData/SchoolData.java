@@ -21,19 +21,12 @@ import java.util.Date;
 public class SchoolData {
 
     @Id
-    @Column(name = "SchoolID")
     int SchoolID;
-    @Column(name = "ClassName")
     String ClassName;
-    @Column(name ="BoardName" )
     String BoardName;
-    @Column(name = "SchoolName")
     String SchoolName;
-    @Column(name = "StartDate")
     Date StartDate;
-    @Column(name = "EndDate")
     Date EndDate;
-    @Column(name = "Percentage")
     Float Percentage;
 
     public int getSchoolID() {
