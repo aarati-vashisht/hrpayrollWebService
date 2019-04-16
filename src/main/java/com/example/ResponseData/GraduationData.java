@@ -10,6 +10,7 @@ import java.util.Date;
                         @ColumnResult(name = "GraduationId", type = Integer.class),
                         @ColumnResult(name = "Degree", type = String.class),
                         @ColumnResult(name = "Specialization", type = String.class),
+                        @ColumnResult(name = "University", type = String.class),
                         @ColumnResult(name = "StartDate", type = Date.class),
                         @ColumnResult(name = "EndDate", type = Date.class),
                         @ColumnResult(name = "percentage", type = Float.class)
@@ -23,14 +24,16 @@ public class GraduationData {
     int GraduationId;
     String Degree;
     String Specialization;
+    String University;
     Date StartDate;
     Date EndDate;
     Float percentage;
 
-    public GraduationData(int graduationId, String degree, String specialization, Date startDate, Date endDate, Float percentage) {
+    public GraduationData(int graduationId, String degree, String specialization, String university, Date startDate, Date endDate, Float percentage) {
         GraduationId = graduationId;
         Degree = degree;
         Specialization = specialization;
+        University = university;
         StartDate = startDate;
         EndDate = endDate;
         this.percentage = percentage;
@@ -58,6 +61,14 @@ public class GraduationData {
 
     public void setSpecialization(String specialization) {
         Specialization = specialization;
+    }
+
+    public String getUniversity() {
+        return University;
+    }
+
+    public void setUniversity(String university) {
+        University = university;
     }
 
     public Date getStartDate() {

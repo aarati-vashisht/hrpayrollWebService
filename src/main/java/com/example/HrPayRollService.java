@@ -72,8 +72,8 @@ public class HrPayRollService {
         storedProcedureQuery.execute();
         String message = storedProcedureQuery.getOutputParameterValue(8).toString();
         String output = storedProcedureQuery.getOutputParameterValue(9).toString();
-        map.put("STATUS", output);
-        map.put("MESSAGE", message);
+        map.put("MESSAGE", output);
+        map.put("STATUS", message);
         return map;
     }
 
@@ -140,7 +140,7 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(4, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(7, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(8, String.class, ParameterMode.OUT);
@@ -304,18 +304,18 @@ public class HrPayRollService {
         storedProcedureQuery.execute();
         String result = storedProcedureQuery.getOutputParameterValue(8).toString();
         String message = storedProcedureQuery.getOutputParameterValue(9).toString();
-
-        map.put("STATUS", message);
-        map.put("MESSAGE", result);
+        map.put("STATUS", result);
+        map.put("MESSAGE", message);
         return map;
 
     }
 
 
+
     public HashMap<String, String> UpdateCountry(Integer CountryID, String CountryName, String CountryCode, String UpdatedBy, String Description, Integer userID) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterCountry");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
@@ -333,14 +333,12 @@ public class HrPayRollService {
         storedProcedureQuery.setParameter(7, userID);
 
         storedProcedureQuery.execute();
-        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
-        String message = storedProcedureQuery.getOutputParameterValue(10).toString();
-
-        map.put("STATUS", message);
-        map.put("MESSAGE", result);
+        String result = storedProcedureQuery.getOutputParameterValue(8).toString();
+        String message = storedProcedureQuery.getOutputParameterValue(9).toString();
+        map.put("STATUS", result);
+        map.put("MESSAGE", message);
         return map;
     }
-
 
     public HashMap<String, String> DeleteCountry(Integer CountryID, Integer userID) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterCountry");
@@ -365,9 +363,8 @@ public class HrPayRollService {
         storedProcedureQuery.execute();
         String result = storedProcedureQuery.getOutputParameterValue(8).toString();
         String message = storedProcedureQuery.getOutputParameterValue(9).toString();
-
-        map.put("STATUS", message);
-        map.put("MESSAGE", result);
+        map.put("STATUS", result);
+        map.put("MESSAGE", message);
         return map;
 
 //Commit set default values QueryType and CountryID,StateID,CityID and set systematic method name
@@ -825,7 +822,7 @@ public class HrPayRollService {
     public HashMap<String, String> AddGraduation(String Degree, String Specialization, String University, String StartDate, String EndDate, String Percentage,String UpdatedBy, Integer userID) throws ParseException {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("graduationprocedure");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
@@ -841,14 +838,14 @@ public class HrPayRollService {
         Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
         float percentage = Float.parseFloat(Percentage);
         storedProcedureQuery.setParameter(1, "INSERT");
-        storedProcedureQuery.setParameter(2, "1");
+        storedProcedureQuery.setParameter(2, 1);
         storedProcedureQuery.setParameter(3, Degree);
         storedProcedureQuery.setParameter(4, Specialization);
         storedProcedureQuery.setParameter(5, University);
         storedProcedureQuery.setParameter(6, date1);
         storedProcedureQuery.setParameter(7, date2);
         storedProcedureQuery.setParameter(8, percentage);
-        storedProcedureQuery.setParameter(19, UpdatedBy);
+        storedProcedureQuery.setParameter(9, UpdatedBy);
         storedProcedureQuery.setParameter(10, userID);
         storedProcedureQuery.execute();
         String result = storedProcedureQuery.getOutputParameterValue(11).toString();
@@ -916,17 +913,18 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(12, String.class, ParameterMode.OUT);
 
-        //Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
-        //Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
+        Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2018");
+        Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2018");
+        float percentage = Float.parseFloat("70.1");
 
         storedProcedureQuery.setParameter(1, "DELETE");
         storedProcedureQuery.setParameter(2, GraduationID);
         storedProcedureQuery.setParameter(3, "");
         storedProcedureQuery.setParameter(4, "");
         storedProcedureQuery.setParameter(5, "");
-        storedProcedureQuery.setParameter(6, "");
-        storedProcedureQuery.setParameter(7, "");
-        storedProcedureQuery.setParameter(8, "");
+        storedProcedureQuery.setParameter(6, date1);
+        storedProcedureQuery.setParameter(7, date2);
+        storedProcedureQuery.setParameter(8, percentage);
         storedProcedureQuery.setParameter(9, "");
         storedProcedureQuery.setParameter(10, userID);
 
@@ -943,7 +941,7 @@ public class HrPayRollService {
     public HashMap<String, String> AddPostGraduation(String Degree, String Specialization, String University, String StartDate, String EndDate, String Percentage, String UpdatedBy, Integer userID) throws ParseException {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("postGraduationprocedure");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
@@ -951,7 +949,7 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(10, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(12, String.class, ParameterMode.OUT);
 
@@ -959,7 +957,7 @@ public class HrPayRollService {
         Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
         float percentage = Float.parseFloat(Percentage);
         storedProcedureQuery.setParameter(1, "INSERT");
-        storedProcedureQuery.setParameter(2, "1");
+        storedProcedureQuery.setParameter(2, 1);
         storedProcedureQuery.setParameter(3, Degree);
         storedProcedureQuery.setParameter(4, Specialization);
         storedProcedureQuery.setParameter(5, University);
@@ -977,11 +975,10 @@ public class HrPayRollService {
 
     }
 
-
     public HashMap<String, String> UpdatePostGraduation(Integer PostGraduationID, String Degree, String Specialization, String University, String StartDate, String EndDate, String Percentage, String UpdatedBy, Integer userID) throws ParseException {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("postGraduationprocedure");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
@@ -989,7 +986,7 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(10, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(12, String.class, ParameterMode.OUT);
 
@@ -1016,10 +1013,10 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> DeletePostGraduation(Integer PostGraduationID, Integer userID) {
+    public HashMap<String, String> DeletePostGraduation(Integer PostGraduationID, Integer userID) throws  ParseException {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("postGraduationprocedure");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
@@ -1027,18 +1024,22 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(7, Date.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(8, Float.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(10, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(12, String.class, ParameterMode.OUT);
+
+        Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2018");
+        Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2018");
+        float percentage = Float.parseFloat("70.1");
 
         storedProcedureQuery.setParameter(1, "DELETE");
         storedProcedureQuery.setParameter(2, PostGraduationID);
         storedProcedureQuery.setParameter(3, "");
         storedProcedureQuery.setParameter(4, "");
         storedProcedureQuery.setParameter(5, "");
-        storedProcedureQuery.setParameter(6, "");
-        storedProcedureQuery.setParameter(7, "");
-        storedProcedureQuery.setParameter(8, "");
+        storedProcedureQuery.setParameter(6, date1);
+        storedProcedureQuery.setParameter(7, date2);
+        storedProcedureQuery.setParameter(8, percentage);
         storedProcedureQuery.setParameter(9, "");
         storedProcedureQuery.setParameter(10, userID);
         storedProcedureQuery.execute();
@@ -1804,8 +1805,26 @@ public class HrPayRollService {
         storedProcedureQuery.setParameter(1, userID);
         return storedProcedureQuery.getResultList();
     }
+    public List<CountryDropDown> getCountryDropDown(String userID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getCountryDropDown", "countryDropDownMapping");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.setParameter(1, userID);
+        return storedProcedureQuery.getResultList();
+    }
 
+    public List<StateDropDown> getStateDropDown(String userID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getStateDropDown", "StateDropDownMapping");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.setParameter(1, userID);
+        return storedProcedureQuery.getResultList();
+    }
 
+    public List<CityDropDown> getCityDropDown(String userID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getCityDropDown", "CityDropDownMapping");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.setParameter(1, userID);
+        return storedProcedureQuery.getResultList();
+    }
 }
 
 
