@@ -26,7 +26,7 @@ public class AddressBookData {
 
     @Id
     int id;
-    String Addresss;
+    String Address;
     String City;
     String State;
     String Country;
@@ -40,7 +40,7 @@ public class AddressBookData {
 
     public AddressBookData(int id, String address, String city, String state, String country, String pin_code, String address_Status, String contact_No, String email_ID, String emergency_contact_person, String emergency_contact_number, int eid) {
         this.id = id;
-        Addresss = address;
+        Address = address;
         City = city;
         State = state;
         Country = country;
@@ -62,11 +62,11 @@ public class AddressBookData {
     }
 
     public String getAddress() {
-        return Addresss;
+        return Address;
     }
 
     public void setAddress(String address) {
-        Addresss = address;
+        Address = address;
     }
 
     public String getCity() {
