@@ -10,6 +10,7 @@ import java.util.Date;
                         @ColumnResult(name = "PostGraduationID", type = Integer.class),
                         @ColumnResult(name = "Degree", type = String.class),
                         @ColumnResult(name = "Specialization", type = String.class),
+                        @ColumnResult(name = "University", type = String.class),
                         @ColumnResult(name = "StartDate", type = Date.class),
                         @ColumnResult(name = "EndDate", type = Date.class),
                         @ColumnResult(name = "percentage", type = Float.class)
@@ -19,28 +20,30 @@ import java.util.Date;
 public class PostGraduationData {
 
     @Id
-    int PostGraduationID;
+    int postGraduationID;
     String Degree;
     String Specialization;
-    Date StartDate;
-    Date EndDate;
-    Float percentage;
+    String University;
+    Date startDate;
+    Date endDate;
+    Float Percentage;
 
-    public PostGraduationData(int postGraduationID, String degree, String specialization, Date startDate, Date endDate, Float percentage) {
-        PostGraduationID = postGraduationID;
+    public PostGraduationData(int postGraduationID, String degree, String specialization, String university, Date startDate, Date endDate, Float percentage) {
+        this.postGraduationID = postGraduationID;
         Degree = degree;
         Specialization = specialization;
-        StartDate = startDate;
-        EndDate = endDate;
-        this.percentage = percentage;
+        University = university;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        Percentage = percentage;
     }
 
     public int getPostGraduationID() {
-        return PostGraduationID;
+        return postGraduationID;
     }
 
     public void setPostGraduationID(int postGraduationID) {
-        PostGraduationID = postGraduationID;
+        this.postGraduationID = postGraduationID;
     }
 
     public String getDegree() {
@@ -59,27 +62,35 @@ public class PostGraduationData {
         Specialization = specialization;
     }
 
+    public String getUniversity() {
+        return University;
+    }
+
+    public void setUniversity(String university) {
+        University = university;
+    }
+
     public Date getStartDate() {
-        return StartDate;
+        return startDate;
     }
 
     public void setStartDate(Date startDate) {
-        StartDate = startDate;
+        this.startDate = startDate;
     }
 
     public Date getEndDate() {
-        return EndDate;
+        return endDate;
     }
 
     public void setEndDate(Date endDate) {
-        EndDate = endDate;
+        this.endDate = endDate;
     }
 
     public Float getPercentage() {
-        return percentage;
+        return Percentage;
     }
 
     public void setPercentage(Float percentage) {
-        this.percentage = percentage;
+        Percentage = percentage;
     }
 }

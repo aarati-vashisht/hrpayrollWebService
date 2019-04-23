@@ -16,8 +16,6 @@ import javax.persistence.*;
         })
 @Entity
 public class DepartmentData {
-
-
     @Id
     int ID;
     String Code;

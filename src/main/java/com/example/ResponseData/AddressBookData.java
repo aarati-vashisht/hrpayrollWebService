@@ -18,6 +18,7 @@ import java.util.Date;
                         @ColumnResult(name = "Email_ID", type = String.class),
                         @ColumnResult(name = "Emergency_contact_person", type = String.class),
                         @ColumnResult(name = "Emergency_contact_number", type = String.class),
+                        @ColumnResult(name = "eid", type = Integer.class),
                        })
         })
 @Entity
@@ -35,8 +36,9 @@ public class AddressBookData {
     String Email_ID;
     String Emergency_contact_person;
     String Emergency_contact_number;
+    int eid;
 
-    public AddressBookData(int id, String address, String city, String state, String country, String pin_code, String address_Status, String contact_No, String email_ID, String emergency_contact_person, String emergency_contact_number) {
+    public AddressBookData(int id, String address, String city, String state, String country, String pin_code, String address_Status, String contact_No, String email_ID, String emergency_contact_person, String emergency_contact_number, int eid) {
         this.id = id;
         Address = address;
         City = city;
@@ -48,6 +50,7 @@ public class AddressBookData {
         Email_ID = email_ID;
         Emergency_contact_person = emergency_contact_person;
         Emergency_contact_number = emergency_contact_number;
+        this.eid = eid;
     }
 
     public int getId() {
@@ -136,5 +139,13 @@ public class AddressBookData {
 
     public void setEmergency_contact_number(String emergency_contact_number) {
         Emergency_contact_number = emergency_contact_number;
+    }
+
+    public int getEid() {
+        return eid;
+    }
+
+    public void setEid(int eid) {
+        this.eid = eid;
     }
 }
