@@ -1368,12 +1368,7 @@ public class HrPayRollService {
         return map;
     }
 
-    public List<PassportData> getVisaData(String userID) {
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getPassportData", "PassportDataMapping");
-        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.setParameter(1, userID);
-        return storedProcedureQuery.getResultList();
-    }
+
 
 
 
@@ -1401,7 +1396,7 @@ public class HrPayRollService {
     }
 
     public List<EmployeeBasicDetails> GetEmolyeeDetail(Integer E_ID, Integer userID) {
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getEmployeeDetails", "resultMapping");
+       StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getEmployeeDetails", "resultMapping");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);

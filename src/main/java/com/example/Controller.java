@@ -757,115 +757,118 @@ public class Controller {
 //        return hrPayRollService.getPassportData(getBody.get("userID"));
 //    }
 
-   // @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/SaveVisaData", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> SaveVisaData(@RequestBody HashMap<String, String> saveBody) throws ParseException {
         return hrPayRollService.SaveVisaData(
-                saveBody.get("Country"),
-                saveBody.get("ExpiryDate"),
-                saveBody.get("UploadDocument"),
-                saveBody.get("TimeDuration"),
-                Integer.valueOf(saveBody.get("EmpId")),
+                saveBody.get("country"),
+                saveBody.get("expiryDate"),
+                saveBody.get("uploadDocument"),
+                saveBody.get("timeDuration"),
+                Integer.valueOf(saveBody.get("empId")),
                 saveBody.get("userId"));
 
     }
 
-   // @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/UpdateVisaData", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> UpdateVisaData(@RequestBody HashMap<String, String> updateBody) throws ParseException {
         return hrPayRollService.UpdateVisaData(
-                updateBody.get("Country"),
-                updateBody.get("ExpiryDate"),
-                updateBody.get("UploadDocument"),
-                updateBody.get("TimeDuration"),
-                Integer.valueOf(updateBody.get("EmpId")),
+                updateBody.get("country"),
+                updateBody.get("expiryDate"),
+                updateBody.get("uploadDocument"),
+                updateBody.get("timeDuration"),
+                Integer.valueOf(updateBody.get("empId")),
                 updateBody.get("userId"),
-                Integer.valueOf(updateBody.get("VisaId")));
+                Integer.valueOf(updateBody.get("visaId")));
 
     }
 
-   // @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/DeleteVisaData", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> DeleteVisaData(@RequestBody HashMap<String, String> deleteBody) throws ParseException {
         return hrPayRollService.DeleteVisaData(
                 deleteBody.get("userId"),
-                Integer.valueOf(deleteBody.get("VisaId")));
+                Integer.valueOf(deleteBody.get("visaId")));
 
     }
 
 
-    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/AddDrivingLicence")
     public HashMap<String, String> AddDrivingLicence(@RequestBody HashMap<String, String> saveBody) throws ParseException {
         return hrPayRollService.AddDrivingLicence(
-                saveBody.get("DLNumber"),
-                saveBody.get("ExpiryDate"),
-                saveBody.get("UploadDocument"),
-                saveBody.get("TimeDuration"),
-                Integer.valueOf(saveBody.get("EID")),
+                saveBody.get("dLNumber"),
+                saveBody.get("expiryDate"),
+                saveBody.get("uploadDocument"),
+                saveBody.get("timeDuration"),
+                Integer.valueOf(saveBody.get("eID")),
                 saveBody.get("userID"));
     }
 
-    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/UpdateDrivingLicence")
     public HashMap<String, String> UpdateDrivingLicence(@RequestBody HashMap<String, String> updateBody) throws ParseException {
         return hrPayRollService.UpdateDrivingLicence(
-                Integer.valueOf(updateBody.get("DLID")),
-                updateBody.get("DLNumber"),
-                updateBody.get("ExpiryDate"),
-                updateBody.get("UploadDocument"),
-                updateBody.get("TimeDuration"),
-                Integer.valueOf(updateBody.get("EID")),
+                Integer.valueOf(updateBody.get("dLID")),
+                updateBody.get("dLNumber"),
+                updateBody.get("expiryDate"),
+                updateBody.get("uploadDocument"),
+                updateBody.get("timeDuration"),
+                Integer.valueOf(updateBody.get("eID")),
                 Integer.valueOf(updateBody.get("userID"))
         );
     }
 
-    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/DeleteDrivingLicence")
     public HashMap<String, String> DeleteDrivingLicence(@RequestBody HashMap<String, String> deleteBody) throws ParseException {
         return hrPayRollService.DeleteDrivingLicence(
-                Integer.valueOf(deleteBody.get("DLID")),
+                Integer.valueOf(deleteBody.get("dLID")),
                 Integer.valueOf(deleteBody.get("userID"))
         );
 
     }
 
 
-    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/AddMedicalCertification")
     public HashMap<String, String> AddMedicalCertification(@RequestBody HashMap<String, String> saveBody) throws ParseException {
         return hrPayRollService.AddMedicalCertification(
-                saveBody.get("MCertificateNumber"),
-                saveBody.get("ExpiryDate"),
-                saveBody.get("UploadDocument"),
-                saveBody.get("TimeDuration"),
-                Integer.valueOf(saveBody.get("EID")),
+                saveBody.get("mCertificateNumber"),
+                saveBody.get("expiryDate"),
+                saveBody.get("uploadDocument"),
+                saveBody.get("timeDuration"),
+                Integer.valueOf(saveBody.get("eID")),
                 saveBody.get("userID"));
     }
 
-    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/UpdateMedicalCertification")
     public HashMap<String, String> UpdateMedicalCertification(@RequestBody HashMap<String, String> updateBody) throws ParseException {
         return hrPayRollService.UpdateMedicalCertification(
-                Integer.valueOf(updateBody.get("MedicalID")),
-                updateBody.get("MCertificateNumber"),
-                updateBody.get("ExpiryDate"),
-                updateBody.get("UploadDocument"),
-                updateBody.get("TimeDuration"),
-                Integer.valueOf(updateBody.get("EID")),
+                Integer.valueOf(updateBody.get("medicalID")),
+                updateBody.get("mCertificateNumber"),
+                updateBody.get("expiryDate"),
+                updateBody.get("uploadDocument"),
+                updateBody.get("timeDuration"),
+                Integer.valueOf(updateBody.get("eID")),
                 Integer.valueOf(updateBody.get("userID"))
         );
     }
 
-    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/DeleteMedicalCertification")
     public HashMap<String, String> DeleteMedicalCertification(@RequestBody HashMap<String, String> deleteBody) throws ParseException {
         return hrPayRollService.DeleteMedicalCertification(
-                Integer.valueOf(deleteBody.get("MedicalID")),
+                Integer.valueOf(deleteBody.get("medicalID")),
                 Integer.valueOf(deleteBody.get("userID"))
         );
 
     }
+
+
+
 
 
 
