@@ -1,5 +1,7 @@
 package com.example.ResponseData;
 
+import org.hibernate.annotations.DynamicInsert;
+
 import javax.persistence.*;
 import java.util.Date;
 

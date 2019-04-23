@@ -16,7 +16,6 @@ import javax.persistence.*;
 @Entity
 public class DesignationData {
 
-
     @Id
     int ID;
     int DepartmentID;

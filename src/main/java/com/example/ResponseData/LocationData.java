@@ -15,7 +15,6 @@ import javax.persistence.*;
 @Entity
 public class LocationData {
 
-
     @Id
     int ID;
     String Description;

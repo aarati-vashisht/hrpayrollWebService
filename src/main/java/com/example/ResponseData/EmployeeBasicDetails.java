@@ -32,7 +32,7 @@ import java.util.Date;
 @Entity
 public class EmployeeBasicDetails {
 
-        @Id
+    @Id
         int E_ID;
          int E_Code;
         String E_FristName;

@@ -14,7 +14,7 @@ import javax.persistence.*;
         })
 @Entity
 public class CountryDropDown {
-    @Id
+@Id
     int ID;
     String Name;
     String Code;

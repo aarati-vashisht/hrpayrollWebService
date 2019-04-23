@@ -22,7 +22,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 @Entity
 public class PostalCodeData {
 
-
     @Id
     int CountryID;
     String CountryName;
