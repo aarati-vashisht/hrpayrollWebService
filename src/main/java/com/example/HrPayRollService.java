@@ -798,11 +798,9 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(10, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(12, String.class, ParameterMode.OUT);
-
         Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2018");
         Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2018");
         float percentage = Float.parseFloat("70.1");
-
         storedProcedureQuery.setParameter(1, "DELETE");
         storedProcedureQuery.setParameter(2, SchoolID);
         storedProcedureQuery.setParameter(3, "");
@@ -836,7 +834,6 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(10, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(12, String.class, ParameterMode.OUT);
-
         Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
         Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
         float percentage = Float.parseFloat(Percentage);
@@ -875,10 +872,8 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(10, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(12, String.class, ParameterMode.OUT);
-
         Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
         Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
-
         float percentage = Float.parseFloat(Percentage);
         storedProcedureQuery.setParameter(1, "UPDATE");
         storedProcedureQuery.setParameter(2, GraduationID);
@@ -896,7 +891,6 @@ public class HrPayRollService {
 
         map.put("STATUS", result);
         map.put("MESSAGE", message);
-
         return map;
     }
 
@@ -915,7 +909,6 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(10, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(12, String.class, ParameterMode.OUT);
-
         Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2018");
         Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2018");
         float percentage = Float.parseFloat("70.1");
@@ -930,7 +923,6 @@ public class HrPayRollService {
         storedProcedureQuery.setParameter(8, percentage);
         storedProcedureQuery.setParameter(9, "");
         storedProcedureQuery.setParameter(10, userID);
-
         storedProcedureQuery.execute();
         String result = storedProcedureQuery.getOutputParameterValue(11).toString();
         String message = storedProcedureQuery.getOutputParameterValue(12).toString();
@@ -1011,7 +1003,7 @@ public class HrPayRollService {
         String message = storedProcedureQuery.getOutputParameterValue(12).toString();
         map.put("STATUS", result);
         map.put("MESSAGE", message);
-        return map;
+      return map;
 
     }
 
@@ -1084,7 +1076,6 @@ public class HrPayRollService {
         storedProcedureQuery.setParameter(8, percentage);
         storedProcedureQuery.setParameter(9, UpdatedBy);
         storedProcedureQuery.setParameter(10, userID);
-
         storedProcedureQuery.execute();
         String result = storedProcedureQuery.getOutputParameterValue(11).toString();
         String message = storedProcedureQuery.getOutputParameterValue(12).toString();
@@ -1147,10 +1138,8 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(12, String.class, ParameterMode.OUT);
-
         //Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(StartDate);
         //Date date2 = new SimpleDateFormat("dd/MM/yyyy").parse(EndDate);
-
         storedProcedureQuery.setParameter(1, "DELETE");
         storedProcedureQuery.setParameter(2, otherEduQualificationTableID);
         storedProcedureQuery.setParameter(3, "");
@@ -1161,7 +1150,6 @@ public class HrPayRollService {
         storedProcedureQuery.setParameter(8, "");
         storedProcedureQuery.setParameter(9, "");
         storedProcedureQuery.setParameter(10, userID);
-
         storedProcedureQuery.execute();
         String result = storedProcedureQuery.getOutputParameterValue(11).toString();
         String message = storedProcedureQuery.getOutputParameterValue(12).toString();
