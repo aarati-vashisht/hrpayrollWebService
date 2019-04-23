@@ -20,8 +20,10 @@ public class Controller {
     @Autowired
     HrPayRollService hrPayRollService;
 
-
-    //State Table//
+    String HighSc;
+    String Highlo;
+    String Highpo;
+    String Highlk;
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/AddState", produces = MediaType.APPLICATION_JSON_VALUE)
