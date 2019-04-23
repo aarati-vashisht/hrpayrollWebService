@@ -1,13 +1,7 @@
-package com.example;
-
-import org.springframework.format.annotation.DateTimeFormat;
-import sun.util.calendar.BaseCalendar;
+package com.example.ResponseData;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.io.Serializable;
 import java.util.Date;
-import java.time.DateTimeException;
 
 @SqlResultSetMapping(
         name = "resultMapping",
@@ -39,47 +33,27 @@ import java.time.DateTimeException;
 public class EmployeeBasicDetails {
 
         @Id
-        @Column(name = "E_ID")
         int E_ID;
-        @Column(name = "E_Code")
-        int E_Code;
-        @Column(name = "E_FristName")
+         int E_Code;
         String E_FristName;
-        @Column(name = "E_MiddleName")
         String E_MiddleName;
-        @Column(name = "E_LastName")
         String E_LastName;
-        @Column(name = "E_Designaton")
         int E_Designaton;
-        @Column(name = "E_Gender")
         String E_Gender;
-        @Column(name = "E_Title")
         String E_Title;
-        @Column(name = "E_DOB")
         Date E_DOB;
-        @Column(name = "E_Dept")
         String E_Dept;
-        @Column(name = "E_MaritalStatus")
         String E_MaritalStatus;
-        @Column(name = "Anniversary")
         String Anniversary;
-        @Column(name = "E_Image")
         String E_Image;
-        @Column(name = "E_EmployementType")
         String E_EmployementType;
-        @Column(name = "CreatedOn")
         @Temporal(TemporalType.DATE)
         Date CreatedOn;
-        @Column(name = "CreatedBy")
         String CreatedBy;
-        @Column(name = "UpdatedOn")
         @Temporal(TemporalType.DATE)
         Date UpdatedOn;
-        @Column(name = "UpdatedBy")
         String UpdatedBy;
-        @Column(name = "EmployeeIsActive")
         Boolean EmployeeIsActive;
-        @Column(name = "EmployeeIsDeleted")
         Boolean EmployeeIsDeleted;
 
 
@@ -266,4 +240,5 @@ public class EmployeeBasicDetails {
     public void setEmployeeIsDeleted(Boolean employeeIsDeleted) {
         EmployeeIsDeleted = employeeIsDeleted;
     }
+
 }
