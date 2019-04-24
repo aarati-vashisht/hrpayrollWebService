@@ -1268,6 +1268,107 @@ public class HrPayRollService {
         storedProcedureQuery.setParameter(1, userID);
         return storedProcedureQuery.getResultList();
     }
+    public HashMap<String, String> SaveVisaData(String Country, String ExpiryDate, String UploadDucument, String TimeDuration, Integer EmpId, String userId) throws ParseException {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterVisa");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(8, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
+
+        Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(ExpiryDate);
+
+        storedProcedureQuery.setParameter(1, "INSERT");
+        storedProcedureQuery.setParameter(2, Country);
+        storedProcedureQuery.setParameter(3, date1);
+        storedProcedureQuery.setParameter(4, UploadDucument);
+        storedProcedureQuery.setParameter(5, TimeDuration);
+        storedProcedureQuery.setParameter(6, EmpId);
+        storedProcedureQuery.setParameter(7, userId);
+        storedProcedureQuery.setParameter(8, 1);
+
+        storedProcedureQuery.execute();
+        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+        String output = storedProcedureQuery.getOutputParameterValue(10).toString();
+        map.put("STATUS", result);
+        map.put("MESSAGE", output);
+        return map;
+    }
+
+
+
+    public HashMap<String, String> UpdateVisaData(String Country, String ExpiryDate, String UploadDucument,
+                                                      String TimeDuration, Integer EmpId, String userId, Integer VisaId) throws ParseException {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterVisa");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(8, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
+
+        Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(ExpiryDate);
+
+        storedProcedureQuery.setParameter(1, "UPDATE");
+        storedProcedureQuery.setParameter(2, Country);
+        storedProcedureQuery.setParameter(3, date1);
+        storedProcedureQuery.setParameter(4, UploadDucument);
+        storedProcedureQuery.setParameter(5, TimeDuration);
+        storedProcedureQuery.setParameter(6, EmpId);
+        storedProcedureQuery.setParameter(7, userId);
+        storedProcedureQuery.setParameter(8, VisaId);
+
+        storedProcedureQuery.execute();
+        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+        String output = storedProcedureQuery.getOutputParameterValue(10).toString();
+        map.put("STATUS", result);
+        map.put("MESSAGE", output);
+        return map;
+    }
+
+
+    public HashMap<String, String> DeleteVisaData(String userId, Integer VisaId) throws ParseException {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterVisa");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(8, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
+
+        Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2014");
+
+        storedProcedureQuery.setParameter(1, "DELETE");
+        storedProcedureQuery.setParameter(2, "");
+        storedProcedureQuery.setParameter(3, date1);
+        storedProcedureQuery.setParameter(4, "");
+        storedProcedureQuery.setParameter(5, "");
+        storedProcedureQuery.setParameter(6, 1);
+        storedProcedureQuery.setParameter(7, userId);
+        storedProcedureQuery.setParameter(8, VisaId);
+
+        storedProcedureQuery.execute();
+        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+        String output = storedProcedureQuery.getOutputParameterValue(10).toString();
+        map.put("STATUS", result);
+        map.put("MESSAGE", output);
+        return map;
+    }
+
+
 
 
 
@@ -1295,7 +1396,7 @@ public class HrPayRollService {
     }
 
     public List<EmployeeBasicDetails> GetEmolyeeDetail(Integer E_ID, Integer userID) {
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getEmployeeDetails", "resultMapping");
+       StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getEmployeeDetails", "resultMapping");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
@@ -1954,6 +2055,205 @@ public class HrPayRollService {
         map.put("STATUS", result);
         map.put("MESSAGE", message);
         return map;
+    }
+
+    public HashMap<String, String> AddDrivingLicence(String DLNumber, String ExpiryDate, String UploadDocument, String TimeDuration, Integer EID, String userID) throws ParseException {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("DrivingLicence");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
+
+        Date expiryDate = new SimpleDateFormat("dd/MM/yyyy").parse(ExpiryDate);
+        storedProcedureQuery.setParameter(1, "INSERT");
+        storedProcedureQuery.setParameter(2, 1);
+        storedProcedureQuery.setParameter(3, DLNumber);
+        storedProcedureQuery.setParameter(4, expiryDate);
+        storedProcedureQuery.setParameter(5, UploadDocument);
+        storedProcedureQuery.setParameter(6, TimeDuration);
+        storedProcedureQuery.setParameter(7, EID);
+        storedProcedureQuery.setParameter(8, userID);
+        storedProcedureQuery.execute();
+        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+        String message = storedProcedureQuery.getOutputParameterValue(10).toString();
+        map.put("STATUS", result);
+        map.put("MESSAGE", message);
+        return map;
+
+    }
+
+    public HashMap<String, String> UpdateDrivingLicence(Integer DLID,String DLNumber, String ExpiryDate, String UploadDocument, String TimeDuration, Integer EID, Integer userID) throws ParseException {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("DrivingLicence");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(8, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
+
+        Date expiryDate = new SimpleDateFormat("dd/MM/yyyy").parse(ExpiryDate);
+        storedProcedureQuery.setParameter(1, "UPDATE");
+        storedProcedureQuery.setParameter(2,DLID);
+        storedProcedureQuery.setParameter(3, DLNumber);
+        storedProcedureQuery.setParameter(4, expiryDate);
+        storedProcedureQuery.setParameter(5, UploadDocument);
+        storedProcedureQuery.setParameter(6, TimeDuration);
+        storedProcedureQuery.setParameter(7, EID);
+        storedProcedureQuery.setParameter(8, userID);
+
+        storedProcedureQuery.execute();
+        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+        String message = storedProcedureQuery.getOutputParameterValue(10).toString();
+        map.put("STATUS", result);
+        map.put("MESSAGE", message);
+        return map;
+
+    }
+
+
+    public HashMap<String, String> DeleteDrivingLicence(Integer DLID, Integer userID) throws ParseException {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("DrivingLicence");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(8, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
+
+        Date expiryDate = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2018");
+
+        storedProcedureQuery.setParameter(1, "DELETE");
+        storedProcedureQuery.setParameter(2, DLID);
+        storedProcedureQuery.setParameter(3, "");
+        storedProcedureQuery.setParameter(4, expiryDate);
+        storedProcedureQuery.setParameter(5, "");
+        storedProcedureQuery.setParameter(6, "");
+        storedProcedureQuery.setParameter(7, 1);
+        storedProcedureQuery.setParameter(8, userID);
+        storedProcedureQuery.execute();
+        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+        String message = storedProcedureQuery.getOutputParameterValue(10).toString();
+        map.put("STATUS", result);
+        map.put("MESSAGE", message);
+        return map;
+
+    }
+    public List<DesignationData> getDrivingLicence(String userID, String DLID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("DrivingLicence", "designationMapping");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.setParameter(1, userID);
+        storedProcedureQuery.setParameter(2, DLID);
+        return storedProcedureQuery.getResultList();
+    }
+    public HashMap<String, String> AddMedicalCertification(String MCertificateNumber, String ExpiryDate, String UploadDocument, String TimeDuration, Integer EID, String userID) throws ParseException {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MedicalCertificate");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(8, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
+
+        Date expiryDate = new SimpleDateFormat("dd/MM/yyyy").parse(ExpiryDate);
+        storedProcedureQuery.setParameter(1, "INSERT");
+        storedProcedureQuery.setParameter(2, 1);
+        storedProcedureQuery.setParameter(3, MCertificateNumber);
+        storedProcedureQuery.setParameter(4, expiryDate);
+        storedProcedureQuery.setParameter(5, UploadDocument);
+        storedProcedureQuery.setParameter(6, TimeDuration);
+        storedProcedureQuery.setParameter(7, EID);
+        storedProcedureQuery.setParameter(8, userID);
+        storedProcedureQuery.execute();
+        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+        String message = storedProcedureQuery.getOutputParameterValue(10).toString();
+        map.put("STATUS", result);
+        map.put("MESSAGE", message);
+        return map;
+
+    }
+
+    public HashMap<String, String> UpdateMedicalCertification(Integer MedicalID,String DLNumber, String ExpiryDate, String UploadDocument, String TimeDuration, Integer EID, Integer userID) throws ParseException {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MedicalCertificate");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(8, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
+
+        Date expiryDate = new SimpleDateFormat("dd/MM/yyyy").parse(ExpiryDate);
+        storedProcedureQuery.setParameter(1, "UPDATE");
+        storedProcedureQuery.setParameter(2,MedicalID);
+        storedProcedureQuery.setParameter(3, DLNumber);
+        storedProcedureQuery.setParameter(4, expiryDate);
+        storedProcedureQuery.setParameter(5, UploadDocument);
+        storedProcedureQuery.setParameter(6, TimeDuration);
+        storedProcedureQuery.setParameter(7, EID);
+        storedProcedureQuery.setParameter(8, userID);
+
+        storedProcedureQuery.execute();
+        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+        String message = storedProcedureQuery.getOutputParameterValue(10).toString();
+        map.put("STATUS", result);
+        map.put("MESSAGE", message);
+        return map;
+
+    }
+
+
+    public HashMap<String, String> DeleteMedicalCertification(Integer MedicalID, Integer userID) throws ParseException {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MedicalCertificate");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(4, Date.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(7, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(8, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
+
+        Date expiryDate = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2018");
+
+        storedProcedureQuery.setParameter(1, "DELETE");
+        storedProcedureQuery.setParameter(2, MedicalID);
+        storedProcedureQuery.setParameter(3, "");
+        storedProcedureQuery.setParameter(4, expiryDate);
+        storedProcedureQuery.setParameter(5, "");
+        storedProcedureQuery.setParameter(6, "");
+        storedProcedureQuery.setParameter(7, 1);
+        storedProcedureQuery.setParameter(8, userID);
+        storedProcedureQuery.execute();
+        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
+        String message = storedProcedureQuery.getOutputParameterValue(10).toString();
+        map.put("STATUS", result);
+        map.put("MESSAGE", message);
+        return map;
+
     }
 
     public List<CountryData> GetCountryByUserID(Integer userID) {
