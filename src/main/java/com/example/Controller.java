@@ -749,7 +749,7 @@ public class Controller {
                 Integer.valueOf(saveBody.get("pId")));
 
     }
-//
+
 //    @CrossOrigin(origins = "http://localhost:4200")
 //    @PostMapping(name = "/getPassportData")
 //    public List<PassportData> getPassportData(@RequestBody HashMap<String, String> getBody) {
@@ -791,6 +791,11 @@ public class Controller {
                 Integer.valueOf(deleteBody.get("visaId")));
 
     }
+    //@CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/getVisaData")
+    public List<VisaData> getVisaData(@RequestBody HashMap<String, String> getVisaBody) {
+        return hrPayRollService.getVisaData(getVisaBody.get("userID"));
+    }
 
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -828,7 +833,11 @@ public class Controller {
         );
 
     }
-
+    //@CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/getDrivingLicence")
+    public List<DrivingLicenceData> getDrivingLicence(@RequestBody HashMap<String, String> getLicenceBody) {
+        return hrPayRollService.getDrivingLicence(getLicenceBody.get("userID"));
+    }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/AddMedicalCertification")
@@ -865,21 +874,15 @@ public class Controller {
         );
 
     }
-
-
-
-
-
-
-
-
-
-
-
+    //@CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/getMedicalCertification")
+    public List<MedicalCertificateData> getMedicalCertification(@RequestBody HashMap<String, String> getBody) {
+        return hrPayRollService.getMedicalCertification(getBody.get("userID"));
+    }
 
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(name = "/GetCountryByUserID")
+    @PostMapping(value = "/GetCountryByUserID")
     public List<CountryData> GetCountryByUserID(@RequestBody HashMap<String, String> Country) {
         return hrPayRollService.GetCountryByUserID(Integer.valueOf(Country.get("userID")));
     }
