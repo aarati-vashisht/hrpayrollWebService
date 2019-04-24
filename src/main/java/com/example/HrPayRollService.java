@@ -1404,7 +1404,7 @@ public class HrPayRollService {
         return map;
     }
 
-    public HashMap<String, String> DeleteAddress(Integer A_ID, String userID) {
+    public HashMap<String, String> DeleteAddress(String A_ID, String userID) {
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterAddressBook");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
@@ -1418,7 +1418,7 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(11, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(12, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(13, Integer.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(13, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(14, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(15, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(16, String.class, ParameterMode.OUT);
@@ -1448,7 +1448,7 @@ public class HrPayRollService {
 
     public HashMap<String, String> saveProfessionQualification(String Institute, String
             Course, String StartDate, String EndDate, String UpdatedBy, Integer userID) throws ParseException {
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("ProfessionalQualification");
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("InsertDataOfProfessionalQualification");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
@@ -2116,18 +2116,17 @@ public class HrPayRollService {
     }
 
     public List<SkillsData> getSkillsData(String userID) {
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("SkillsMapping", "getSkillsData");
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getSkillsData", "SkillsMapping");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.setParameter(1, userID);
         return storedProcedureQuery.getResultList();
     }
     public List<AchiementsData> getAchiementsData(String userID) {
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("SkillsMapping", "getSkillsData");
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getAchiementsData", "AchiementsDataMapping");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.setParameter(1, userID);
         return storedProcedureQuery.getResultList();
     }
 
 }
-
 
