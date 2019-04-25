@@ -756,6 +756,7 @@ public class Controller {
         return hrPayRollService.getPassportData(getBody.get("userID"));
     }
 
+
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/SaveVisaData", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> SaveVisaData(@RequestBody HashMap<String, String> saveBody) throws ParseException {
@@ -790,6 +791,11 @@ public class Controller {
                 deleteBody.get("userId"),
                 Integer.valueOf(deleteBody.get("visaId")));
 
+    }
+    //@CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/getVisaData")
+    public List<VisaData> getVisaData(@RequestBody HashMap<String, String> getVisaBody) {
+        return hrPayRollService.getVisaData(getVisaBody.get("userID"));
     }
 
 
@@ -828,7 +834,11 @@ public class Controller {
         );
 
     }
-
+    //@CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/getDrivingLicence")
+    public List<DrivingLicenceData> getDrivingLicence(@RequestBody HashMap<String, String> getLicenceBody) {
+        return hrPayRollService.getDrivingLicence(getLicenceBody.get("userID"));
+    }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/AddMedicalCertification")
@@ -900,7 +910,7 @@ public class Controller {
     }
 
 
-   // @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/getEducationalcertificatesData")
     public List<EducationalCertificateData> getEducationalcertificatesData(@RequestBody HashMap<String, String> getData) {
         return hrPayRollService.getEducationalcertificatesData(
@@ -914,6 +924,11 @@ public class Controller {
 
 
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/getMedicalCertification")
+    public List<MedicalCertificateData> getMedicalCertification(@RequestBody HashMap<String, String> getBody) {
+        return hrPayRollService.getMedicalCertification(getBody.get("userID"));
+    }
 
 
     @CrossOrigin(origins = "http://localhost:4200")
