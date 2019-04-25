@@ -23,7 +23,7 @@ dependencies {
 
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
 	compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.2.3.Final'
-	compile group: 'com.mysql.jdbc', name: 'com.springsource.com.mysql.jdbc', version: '5.1.6'
+//	compile group: 'com.mysql.jdbc', name: 'com.springsource.com.mysql.jdbc', version: '5.1.6'
 
 }
 
