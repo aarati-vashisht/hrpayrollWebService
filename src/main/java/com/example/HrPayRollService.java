@@ -1,18 +1,14 @@
 package com.example;
 
 import com.example.ResponseData.*;
-import org.apache.commons.logging.Log;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -1368,13 +1364,12 @@ public class HrPayRollService {
     }
 
 
-
-
-
-
-
-
-
+    public List<VisaData> getVisaData(String userID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getVisaData", "VisaDataMapping");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.setParameter(1, userID);
+        return storedProcedureQuery.getResultList();
+    }
 
 
     public List<EmployeeBasicDetails> GetAllEmolyeeDetails() {
@@ -2151,12 +2146,10 @@ public class HrPayRollService {
         return map;
 
     }
-    public List<DesignationData> getDrivingLicence(String userID, String DLID) {
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("DrivingLicence", "designationMapping");
+    public List<DrivingLicenceData> getDrivingLicence(String userID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getDrivingLicenceData", "DLDataMapping");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
         storedProcedureQuery.setParameter(1, userID);
-        storedProcedureQuery.setParameter(2, DLID);
         return storedProcedureQuery.getResultList();
     }
     public HashMap<String, String> AddMedicalCertification(String MCertificateNumber, String ExpiryDate, String UploadDocument, String TimeDuration, Integer EID, String userID) throws ParseException {
@@ -2253,6 +2246,12 @@ public class HrPayRollService {
         map.put("MESSAGE", message);
         return map;
 
+    }
+    public List<MedicalCertificateData> getMedicalCertification(String userID) {
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("getMedicalCertificateData", "MedicalDataMapping");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.setParameter(1, userID);
+        return storedProcedureQuery.getResultList();
     }
 
 
