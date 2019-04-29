@@ -16,25 +16,24 @@ import javax.persistence.*;
 public class DesignationDataByUser {
 
     @Id
-    int DesignationID;
+    int DesignationId;
     String DesignationName;
     String DesignationCode;
     String Description;
 
-    public DesignationDataByUser(int designationID, String designationName, String designationCode, String description) {
-        DesignationID = designationID;
+    public DesignationDataByUser(int designationId, String designationName, String designationCode, String description) {
+        DesignationId = designationId;
         DesignationName = designationName;
         DesignationCode = designationCode;
         Description = description;
     }
 
-
-    public int getDesignationID() {
-        return DesignationID;
+    public int getDesignationId() {
+        return DesignationId;
     }
 
-    public void setDesignationID(int designationID) {
-        DesignationID = designationID;
+    public void setDesignationId(int designationId) {
+        DesignationId = designationId;
     }
 
     public String getDesignationName() {
