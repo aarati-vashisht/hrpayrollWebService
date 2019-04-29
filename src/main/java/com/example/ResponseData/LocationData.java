@@ -16,24 +16,24 @@ import javax.persistence.*;
 public class LocationData {
 
     @Id
-    int ID;
+    int Id;
     String Description;
     String Code;
     String Name;
 
-    public LocationData(int ID, String description, String code, String name) {
-        this.ID = ID;
+    public LocationData(int id, String description, String code, String name) {
+        Id = id;
         Description = description;
         Code = code;
         Name = name;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return Id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        Id = id;
     }
 
     public String getDescription() {

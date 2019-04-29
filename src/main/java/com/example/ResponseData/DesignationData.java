@@ -9,7 +9,8 @@ import javax.persistence.*;
                         @ColumnResult(name = "DesignationID", type = Integer.class),
                         @ColumnResult(name = "DepartmentID", type = Integer.class),
                         @ColumnResult(name = "DesignationCode", type = String.class),
-                        @ColumnResult(name = "DesignationName", type = String.class)
+                        @ColumnResult(name = "DesignationName", type = String.class),
+                        @ColumnResult(name = "Description", type = String.class),
 
                 })
         })
@@ -18,15 +19,15 @@ public class DesignationData {
 
     @Id
     int ID;
-    int DepartmentID;
     String Code;
     String Name;
+    String Description;
 
-    public DesignationData(int ID, int departmentID, String code, String name) {
+    public DesignationData(int ID, String code, String name, String description) {
         this.ID = ID;
-        DepartmentID = departmentID;
         Code = code;
         Name = name;
+        Description = description;
     }
 
     public int getID() {
@@ -35,14 +36,6 @@ public class DesignationData {
 
     public void setID(int ID) {
         this.ID = ID;
-    }
-
-    public int getDepartmentID() {
-        return DepartmentID;
-    }
-
-    public void setDepartmentID(int departmentID) {
-        DepartmentID = departmentID;
     }
 
     public String getCode() {
@@ -59,5 +52,13 @@ public class DesignationData {
 
     public void setName(String name) {
         Name = name;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
     }
 }
