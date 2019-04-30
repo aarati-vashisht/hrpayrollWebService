@@ -377,21 +377,24 @@ public class HrPayRollService {
     }
 
 
-    public HashMap<String, String> SaveMultipleeLocation(String JSON) {
+    public HashMap<String, String> SaveMultipleLocation(String JSON) {
         JSON = JSON.replace("\'", "\"");
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterLocationProcedure");
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("Testprocedure");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.OUT);
         storedProcedureQuery.setParameter(1, "INSERT");
         storedProcedureQuery.setParameter(2, JSON);
 
         storedProcedureQuery.execute();
         String result = storedProcedureQuery.getOutputParameterValue(3).toString();
         String message = storedProcedureQuery.getOutputParameterValue(4).toString();
+        String output = storedProcedureQuery.getOutputParameterValue(5).toString();
         map.put("STATUS", result);
         map.put("MESSAGE", message);
+        map.put("output", output);
         return map;
     }
 
@@ -505,19 +508,22 @@ public class HrPayRollService {
 
     public HashMap<String, String> DeleteMultipleLocation(String JSON) {
         JSON = JSON.replace("\'", "\"");
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterLocationProcedure");
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("Testprocedure");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.OUT);
         storedProcedureQuery.setParameter(1, "DELETE");
         storedProcedureQuery.setParameter(2, JSON);
 
         storedProcedureQuery.execute();
         String result = storedProcedureQuery.getOutputParameterValue(3).toString();
         String message = storedProcedureQuery.getOutputParameterValue(4).toString();
+        String output = storedProcedureQuery.getOutputParameterValue(5).toString();
         map.put("STATUS", result);
         map.put("MESSAGE", message);
+        map.put("OUTPUT", output);
         return map;
     }
 

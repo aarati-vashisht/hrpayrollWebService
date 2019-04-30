@@ -21,7 +21,6 @@ public class LocationData {
     String Code;
     String Name;
 
-
     public LocationData(int id, String description, String code, String name) {
         Id = id;
         Description = description;
