@@ -18,14 +18,14 @@ public class LocationData {
     @Id
     int Id;
     String Description;
-    String LocationCode;
-    String LocationName;
+    String Code;
+    String Name;
 
     public LocationData(int id, String description, String code, String name) {
         Id = id;
         Description = description;
-        LocationCode = locationCode;
-        LocationName = locationName;
+        Code = code;
+        Name = name;
     }
 
     public int getId() {
@@ -44,19 +44,19 @@ public class LocationData {
         Description = description;
     }
 
-    public String getLocationCode() {
-        return LocationCode;
+    public String getCode() {
+        return Code;
     }
 
-    public void setLocationCode(String locationCode) {
-        LocationCode = locationCode;
+    public void setCode(String code) {
+        Code = code;
     }
 
-    public String getLocationName() {
-        return LocationName;
+    public String getName() {
+        return Name;
     }
 
-    public void setLocationName(String locationName) {
-        LocationName = locationName;
+    public void setName(String name) {
+        Name = name;
     }
 }
