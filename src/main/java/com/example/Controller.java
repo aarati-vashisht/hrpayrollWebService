@@ -42,14 +42,20 @@ public class Controller {
 
 
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/SaveMultipleState", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> SaveMultipleState(@RequestBody HashMap<String, String> insertBody) {
         return hrPayRollService.SaveMultipleState(
                 insertBody.get("jsonData"));
 
     }
+    //@CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/UpdateMultipleState", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HashMap<String, String> UpdateMultipleState(@RequestBody HashMap<String, String> deleteBody) {
+        return hrPayRollService.UpdateMultipleState(
+                deleteBody.get("jsonData"));
 
+    }
 
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -73,7 +79,7 @@ public class Controller {
                 Integer.valueOf(deleteBody.get("userID")));
 
     }
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/DeleteMultipleState", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> DeleteMultipleState(@RequestBody HashMap<String, String> deleteBody) {
         return hrPayRollService.DeleteMultipleState(
