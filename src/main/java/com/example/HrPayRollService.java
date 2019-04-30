@@ -613,6 +613,9 @@ public class HrPayRollService {
         map.put("MESSAGE", message);
         return map;
     }
+
+
+
     public HashMap<String, String> SaveMultipleDepartment(String JSON ) {
         JSON=JSON.replace("\'","\"");
         StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDepartmentProcedure");
@@ -620,184 +623,23 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.OUT);
         storedProcedureQuery.setParameter(1, "INSERT");
         storedProcedureQuery.setParameter(2, JSON);
 
         storedProcedureQuery.execute();
         String result = storedProcedureQuery.getOutputParameterValue(3).toString();
         String message = storedProcedureQuery.getOutputParameterValue(4).toString();
+        String output = storedProcedureQuery.getOutputParameterValue(5).toString();
         map.put("STATUS", result );
         map.put("MESSAGE", message);
+        map.put("OUTPUT", output);
         return map;
     }
 
-    public HashMap<String, String> AddDepartment(Integer LocationID, String DepartmentCode, String DepartmentName, String Description, String UpdatedBy, Integer userID) {
-
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDepartment");
-        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(8, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
-        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
-        storedProcedureQuery.setParameter(1, "INSERT");
-        storedProcedureQuery.setParameter(2, "1");
-        storedProcedureQuery.setParameter(3, LocationID);
-        storedProcedureQuery.setParameter(4, DepartmentCode);
-        storedProcedureQuery.setParameter(5, DepartmentName);
-        storedProcedureQuery.setParameter(6, Description);
-        storedProcedureQuery.setParameter(7, UpdatedBy);
-        storedProcedureQuery.setParameter(8, userID);
-
-        storedProcedureQuery.execute();
-        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
-        String message = storedProcedureQuery.getOutputParameterValue(10).toString();
-        map.put("STATUS", result);
-        map.put("MESSAGE", message);
-
-        return map;
-
-    }
-
-
-    public HashMap<String, String> UpdateDepartment(Integer DepartmentID, Integer LocationID, String DepartmentName, String DepartmentCode, String Description, String UpdatedBy, Integer userID) {
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDepartment");
-        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(8, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
-        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
-
-        storedProcedureQuery.setParameter(1, "UPDATE");
-        storedProcedureQuery.setParameter(2, DepartmentID);
-        storedProcedureQuery.setParameter(3, LocationID);
-        storedProcedureQuery.setParameter(4, DepartmentName);
-        storedProcedureQuery.setParameter(5, DepartmentCode);
-        storedProcedureQuery.setParameter(6, Description);
-        storedProcedureQuery.setParameter(7, UpdatedBy);
-        storedProcedureQuery.setParameter(8, userID);
-        storedProcedureQuery.execute();
-        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
-        String message = storedProcedureQuery.getOutputParameterValue(10).toString();
-        map.put("STATUS", result);
-        map.put("MESSAGE", message);
-
-        return map;
-    }
-
-
-    public HashMap<String, String> DeleteDepartment(Integer DepartmentID, Integer userID) {
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDepartment");
-        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(8, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
-        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
-        storedProcedureQuery.setParameter(1, "DELETE");
-        storedProcedureQuery.setParameter(2, DepartmentID);
-        storedProcedureQuery.setParameter(3, 1);
-        storedProcedureQuery.setParameter(4, "");
-        storedProcedureQuery.setParameter(5, "");
-        storedProcedureQuery.setParameter(6, "");
-        storedProcedureQuery.setParameter(7, "");
-        storedProcedureQuery.setParameter(8, userID);
-
-        storedProcedureQuery.execute();
-        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
-        String message = storedProcedureQuery.getOutputParameterValue(10).toString();
-        map.put("STATUS", result);
-        map.put("MESSAGE", message);
-
-        return map;
-
-    }
-
-    public HashMap<String, String> DeleteMultipleDepartment(String JSON) {
-        JSON = JSON.replace("\'", "\"");
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDepartmenProcedure");
-        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT);
-        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT);
-        storedProcedureQuery.setParameter(1, "DELETE");
-        storedProcedureQuery.setParameter(2, JSON);
-
-        storedProcedureQuery.execute();
-        String result = storedProcedureQuery.getOutputParameterValue(3).toString();
-        String message = storedProcedureQuery.getOutputParameterValue(4).toString();
-        map.put("STATUS", result);
-        map.put("MESSAGE", message);
-        return map;
-    }
-
-
-    public HashMap<String, String> SaveMultipleDesignation(String JSON) {
-        JSON = JSON.replace("\'", "\"");
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDesignationProcedure");
-        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT);
-        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT);
-        storedProcedureQuery.setParameter(1, "INSERT");
-        storedProcedureQuery.setParameter(2, JSON);
-
-        storedProcedureQuery.execute();
-        String result = storedProcedureQuery.getOutputParameterValue(3).toString();
-        String message = storedProcedureQuery.getOutputParameterValue(4).toString();
-        map.put("STATUS", result);
-        map.put("MESSAGE", message);
-        return map;
-    }
-
-
-    public HashMap<String, String> AddDesignation(Integer DepartmentID, String DesignationCode, String DesignationName, String Description, String UpdatedBy, Integer userID) {
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDesignation");
-        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(8, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
-        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
-
-        storedProcedureQuery.setParameter(1, "INSERT");
-        storedProcedureQuery.setParameter(2, 1);
-        storedProcedureQuery.setParameter(3, DepartmentID);
-        storedProcedureQuery.setParameter(4, DesignationCode);
-        storedProcedureQuery.setParameter(5, DesignationName);
-        storedProcedureQuery.setParameter(6, Description);
-        storedProcedureQuery.setParameter(7, UpdatedBy);
-        storedProcedureQuery.setParameter(8, userID);
-
-        storedProcedureQuery.execute();
-        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
-        String message = storedProcedureQuery.getOutputParameterValue(10).toString();
-        map.put("STATUS", result);
-        map.put("MESSAGE", message);
-
-        return map;
-
-    }
-    public HashMap<String, String> UpdateMultipleLocation(String JSON) {
-        JSON = JSON.replace("\'", "\"");
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("Testprocedure");
+    public HashMap<String, String>UpdateMultipleDepartment(String JSON ) {
+        JSON=JSON.replace("\'","\"");
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDepartmentProcedure");
         storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT);
@@ -809,73 +651,78 @@ public class HrPayRollService {
         storedProcedureQuery.execute();
         String result = storedProcedureQuery.getOutputParameterValue(3).toString();
         String message = storedProcedureQuery.getOutputParameterValue(4).toString();
-        String output = storedProcedureQuery.getOutputParameterValue(4).toString();
+        String output = storedProcedureQuery.getOutputParameterValue(5).toString();
+        map.put("STATUS", result );
+        map.put("MESSAGE", message);
+        map.put("OUTPUT", output);
+        return map;
+    }
+
+    public HashMap<String, String> DeleteMultipleDepartment(String JSON) {
+        JSON = JSON.replace("\'", "\"");
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDepartmentProcedure");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.OUT);
+        storedProcedureQuery.setParameter(1, "DELETE");
+        storedProcedureQuery.setParameter(2, JSON);
+
+        storedProcedureQuery.execute();
+        String result = storedProcedureQuery.getOutputParameterValue(3).toString();
+        String message = storedProcedureQuery.getOutputParameterValue(4).toString();
+        String output = storedProcedureQuery.getOutputParameterValue(5).toString();
+        map.put("STATUS", result );
+        map.put("MESSAGE", message);
+        map.put("OUTPUT", output);
+        return map;
+    }
+
+
+    public HashMap<String, String> SaveMultipleDesignation(String JSON) {
+        JSON = JSON.replace("\'", "\"");
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDesignationProcedure");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.OUT);
+        storedProcedureQuery.setParameter(1, "INSERT");
+        storedProcedureQuery.setParameter(2, JSON);
+
+        storedProcedureQuery.execute();
+        String result = storedProcedureQuery.getOutputParameterValue(3).toString();
+        String message = storedProcedureQuery.getOutputParameterValue(4).toString();
+        String output = storedProcedureQuery.getOutputParameterValue(5).toString();
         map.put("STATUS", result);
         map.put("MESSAGE", message);
         map.put("OUTPUT", output);
         return map;
     }
 
-    public HashMap<String, String> UpdateDesignation(Integer designationId, Integer departmentId,  String designationCode,String designationName, String description, String userId) {
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDesignation");
-        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(8, String.class, ParameterMode.OUT);
-        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
 
+    public HashMap<String, String> UpdateMultipleDesignation(String JSON) {
+        JSON = JSON.replace("\'", "\"");
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDesignationProcedure");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.OUT);
         storedProcedureQuery.setParameter(1, "UPDATE");
-        storedProcedureQuery.setParameter(2, designationId);
-        storedProcedureQuery.setParameter(3, departmentId);
-        storedProcedureQuery.setParameter(4, designationCode);
-        storedProcedureQuery.setParameter(5, designationName);
-        storedProcedureQuery.setParameter(6, description);
-        storedProcedureQuery.setParameter(7, userId);
+        storedProcedureQuery.setParameter(2, JSON);
 
         storedProcedureQuery.execute();
-        String result = storedProcedureQuery.getOutputParameterValue(8).toString();
-        String message = storedProcedureQuery.getOutputParameterValue(9).toString();
+        String result = storedProcedureQuery.getOutputParameterValue(3).toString();
+        String message = storedProcedureQuery.getOutputParameterValue(4).toString();
+        String output = storedProcedureQuery.getOutputParameterValue(5).toString();
         map.put("STATUS", result);
         map.put("MESSAGE", message);
-
+        map.put("OUTPUT", output);
         return map;
     }
 
-
-    public HashMap<String, String> DeleteDesignation(Integer DesignationID, Integer userID) {
-        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterDesignation");
-        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(2, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(3, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(8, Integer.class, ParameterMode.IN);
-        storedProcedureQuery.registerStoredProcedureParameter(9, String.class, ParameterMode.OUT);
-        storedProcedureQuery.registerStoredProcedureParameter(10, String.class, ParameterMode.OUT);
-
-        storedProcedureQuery.setParameter(1, "DELETE");
-        storedProcedureQuery.setParameter(2, DesignationID);
-        storedProcedureQuery.setParameter(3, 1);
-        storedProcedureQuery.setParameter(4, "");
-        storedProcedureQuery.setParameter(5, "");
-        storedProcedureQuery.setParameter(6, "");
-        storedProcedureQuery.setParameter(7, "");
-        storedProcedureQuery.setParameter(8, userID);
-
-        storedProcedureQuery.execute();
-        String result = storedProcedureQuery.getOutputParameterValue(9).toString();
-        String message = storedProcedureQuery.getOutputParameterValue(10).toString();
-        map.put("STATUS", result);
-        map.put("MESSAGE", message);
-
-        return map;
-
-    }
 
     public HashMap<String, String> DeleteMultipleDesignation(String JSON) {
         JSON = JSON.replace("\'", "\"");
@@ -884,7 +731,29 @@ public class HrPayRollService {
         storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
         storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT);
         storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(5, String.class, ParameterMode.OUT);
         storedProcedureQuery.setParameter(1, "DELETE");
+        storedProcedureQuery.setParameter(2, JSON);
+
+        storedProcedureQuery.execute();
+        String result = storedProcedureQuery.getOutputParameterValue(3).toString();
+        String message = storedProcedureQuery.getOutputParameterValue(4).toString();
+        String output = storedProcedureQuery.getOutputParameterValue(5).toString();
+        map.put("STATUS", result);
+        map.put("MESSAGE", message);
+        map.put("OUTPUT", output);
+        return map;
+    }
+
+
+    public HashMap<String, String> UpdateMultipleLocation(String JSON) {
+        JSON = JSON.replace("\'", "\"");
+        StoredProcedureQuery storedProcedureQuery = em.createStoredProcedureQuery("MasterLocationProcedure");
+        storedProcedureQuery.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        storedProcedureQuery.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT);
+        storedProcedureQuery.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT);
+        storedProcedureQuery.setParameter(1, "UPDATE");
         storedProcedureQuery.setParameter(2, JSON);
 
         storedProcedureQuery.execute();
@@ -894,6 +763,7 @@ public class HrPayRollService {
         map.put("MESSAGE", message);
         return map;
     }
+
 
 
     public HashMap<String, String> SaveMultipleSchool(String JSON) {

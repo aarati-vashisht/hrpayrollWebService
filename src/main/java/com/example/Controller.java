@@ -545,7 +545,7 @@ public class Controller {
     }
 
 
-    // @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/SaveMultipleDepartment", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> SaveMultipleDepartment(@RequestBody HashMap<String, String> insertBody) {
         return hrPayRollService.SaveMultipleDepartment(
@@ -556,42 +556,14 @@ public class Controller {
 
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(value = "/AddDepartment")
-    public HashMap<String, String> AddDepartment(@RequestBody HashMap<String, String> saveBody) {
-        return hrPayRollService.AddDepartment(
-                Integer.valueOf(saveBody.get("LocationID")),
-                saveBody.get("DepartmentCode"),
-                saveBody.get("DepartmentName"),
-                saveBody.get("Description"),
-                saveBody.get("UpdatedBy"),
-                Integer.valueOf(saveBody.get("userID"))
-
-        );
-    }
-
-    @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(value = "/UpdateDepartment")
-    public HashMap<String, String> UpdateDepartment(@RequestBody HashMap<String, String> updateBody) {
-        return hrPayRollService.UpdateDepartment(
-                Integer.valueOf(updateBody.get("DepartmentID")),
-                Integer.valueOf(updateBody.get("LocationID")),
-                updateBody.get("DepartmentName"),
-                updateBody.get("DepartmentCode"),
-                updateBody.get("Description"),
-                updateBody.get("UpdatedBy"),
-                Integer.valueOf(updateBody.get("userID"))
-
-        );
-    }
-
-    @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(value = "/DeleteDepartment")
-    public HashMap<String, String> DeleteDepartment(@RequestBody HashMap<String, String> deleteBody) {
-        return hrPayRollService.DeleteDepartment(
-                Integer.valueOf(deleteBody.get("DepartmentID")),
-                Integer.valueOf(deleteBody.get("userID")));
+    @PostMapping(value = "/UpdateMultipleDepartment", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HashMap<String, String> UpdateMultipleDepartment(@RequestBody HashMap<String, String> insertBody) {
+        return hrPayRollService.UpdateMultipleDepartment(
+                insertBody.get("jsonData"));
 
     }
+
+
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/DeleteMultipleDepartment", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> DeleteMultipleDepartment(@RequestBody HashMap<String, String> deleteBody) {
@@ -608,19 +580,23 @@ public class Controller {
 
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value = "/UpdateMultipleDesignation", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HashMap<String, String> UpdateMultipleDesignation(@RequestBody HashMap<String, String> deleteBody) {
+        return hrPayRollService.UpdateMultipleDesignation(
+                deleteBody.get("jsonData"));
+
+    }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(value = "/AddDesignation")
-    public HashMap<String, String> AddDesignation(@RequestBody HashMap<String, String> saveBody) {
-        return hrPayRollService.AddDesignation(
-                Integer.valueOf(saveBody.get("DepartmentID")),
-                saveBody.get("DesignationCode"),
-                saveBody.get("DesignationName"),
-                saveBody.get("Description"),
-                saveBody.get("UpdatedBy"),
-                Integer.valueOf(saveBody.get("userID")));
+    @PostMapping(value = "/DeleteMultipleDesignation", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HashMap<String, String> DeleteMultipleDesignation(@RequestBody HashMap<String, String> deleteBody) {
+        return hrPayRollService.DeleteMultipleDesignation(
+                deleteBody.get("jsonData"));
+
     }
-    //@CrossOrigin(origins = "http://localhost:4200")
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/UpdateMultipleLocation", produces = MediaType.APPLICATION_JSON_VALUE)
     public HashMap<String, String> UpdateMultipleLocation(@RequestBody HashMap<String, String> insertBody) {
         return hrPayRollService.UpdateMultipleLocation(
@@ -628,34 +604,7 @@ public class Controller {
 
     }
 
-    //@CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(value = "/UpdateDesignation")
-    public HashMap<String, String> UpdateDesignation(@RequestBody HashMap<String, String> updateBody) {
-        return hrPayRollService.UpdateDesignation(
-                Integer.valueOf(updateBody.get("designationId")),
-                Integer.valueOf(updateBody.get("departmentId")),
 
-                updateBody.get("designationCode"),
-                updateBody.get("designationName"),
-                updateBody.get("description"),
-                updateBody.get("userId"));
-    }
-
-    @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(value = "/DeleteDesignation")
-    public HashMap<String, String> DeleteDesignation(@RequestBody HashMap<String, String> deleteBody) {
-        return hrPayRollService.DeleteDesignation(
-                Integer.valueOf(deleteBody.get("DesignationID")),
-                Integer.valueOf(deleteBody.get("userID")));
-
-    }
-     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(value = "/DeleteMultipleDesignation", produces = MediaType.APPLICATION_JSON_VALUE)
-    public HashMap<String, String> DeleteMultipleDesignation(@RequestBody HashMap<String, String> deleteBody) {
-        return hrPayRollService.DeleteMultipleDesignation(
-                deleteBody.get("jsonData"));
-
-    }
 
      @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/SaveMultipleSchool", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -1111,11 +1060,11 @@ public class Controller {
 
     }
 
-    //@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/getLocation", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<LocationData> getLocation(@RequestBody HashMap<String, String> deleteBody) {
         return hrPayRollService.getLocation(
-                deleteBody.get("userId"));
+                deleteBody.get("userID"));
 
     }
 
