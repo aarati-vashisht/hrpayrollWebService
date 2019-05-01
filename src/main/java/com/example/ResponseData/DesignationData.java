@@ -6,7 +6,7 @@ import javax.persistence.*;
         name = "designationMapping",
         classes = {
                 @ConstructorResult(targetClass = DesignationData.class, columns = {
-                        @ColumnResult(name = "DesignationID", type = Integer.class),
+
                         @ColumnResult(name = "DepartmentID", type = Integer.class),
                         @ColumnResult(name = "DesignationCode", type = String.class),
                         @ColumnResult(name = "DesignationName", type = String.class),
