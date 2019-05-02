@@ -10,7 +10,13 @@ import javax.persistence.*;
                         @ColumnResult(name = "DesignationName", type = String.class),
                         @ColumnResult(name = "DesignationCode", type = String.class),
                         @ColumnResult(name = "Description", type = String.class),
-                        })
+                        @ColumnResult(name = "DepartmentID", type = Integer.class),
+                        @ColumnResult(name = "DepartmentName", type = String.class),
+                        @ColumnResult(name = "LocationId", type = Integer.class),
+                        @ColumnResult(name = "LocationName", type = String.class),
+
+
+                })
         })
 @Entity
 public class DesignationDataByUser {
@@ -18,14 +24,23 @@ public class DesignationDataByUser {
     @Id
     int DesignationId;
     String DesignationName;
+    int DepartmentID;
+    String DepartmentName;
     String DesignationCode;
     String Description;
+    int LocationId;
+    String LocationName;
 
-    public DesignationDataByUser(int designationId, String designationName, String designationCode, String description) {
+
+    public DesignationDataByUser(int designationId, String designationName, int departmentID, String departmentName, String designationCode, String description, int locationId, String locationName) {
         DesignationId = designationId;
         DesignationName = designationName;
+        DepartmentID = departmentID;
+        DepartmentName = departmentName;
         DesignationCode = designationCode;
         Description = description;
+        LocationId = locationId;
+        LocationName = locationName;
     }
 
     public int getDesignationId() {
@@ -44,6 +59,22 @@ public class DesignationDataByUser {
         DesignationName = designationName;
     }
 
+    public int getDepartmentID() {
+        return DepartmentID;
+    }
+
+    public void setDepartmentID(int departmentID) {
+        DepartmentID = departmentID;
+    }
+
+    public String getDepartmentName() {
+        return DepartmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        DepartmentName = departmentName;
+    }
+
     public String getDesignationCode() {
         return DesignationCode;
     }
@@ -58,5 +89,21 @@ public class DesignationDataByUser {
 
     public void setDescription(String description) {
         Description = description;
+    }
+
+    public int getLocationId() {
+        return LocationId;
+    }
+
+    public void setLocationId(int locationId) {
+        LocationId = locationId;
+    }
+
+    public String getLocationName() {
+        return LocationName;
+    }
+
+    public void setLocationName(String locationName) {
+        LocationName = locationName;
     }
 }
