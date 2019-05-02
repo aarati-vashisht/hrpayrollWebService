@@ -635,16 +635,6 @@ public class Controller {
 
 
 
-    //@CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(value = "/SaveMultiplePG", produces = MediaType.APPLICATION_JSON_VALUE)
-    public HashMap<String, String> SaveMultiplePG(@RequestBody HashMap<String, String> insertBody) {
-        return hrPayRollService.SaveMultiplePG(
-                insertBody.get("jsonData"));
-
-    }
-
-
-
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/AddPostGraduation")
     public HashMap<String, String> AddPostGraduation(@RequestBody HashMap<String, String> saveBody) throws ParseException {
@@ -1003,27 +993,12 @@ public class Controller {
                 deleteBody.get("userID"));
 
     }
-    //@CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(value = "/getLocationDropDown", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<LocationDropDown> getLocationDropDown(@RequestBody HashMap<String, String> deleteBody) {
-        return hrPayRollService.getLocationDropDown(
-                deleteBody.get("userId"));
-
-    }
 
 
     //@CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/getDepartment", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DepartmentData> getDepartment(@RequestBody HashMap<String, String> getBody) {
         return hrPayRollService.getDepartment(
-                getBody.get("userId"),
-                Integer.valueOf(getBody.get("locationId")));
-
-    }
-    //@CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(value = "/getDepartmentDropDown", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DepartmentDropDown> getDepartmentDropDown(@RequestBody HashMap<String, String> getBody) {
-        return hrPayRollService.getDepartmentDropDown(
                 getBody.get("userId"),
                 Integer.valueOf(getBody.get("locationId")));
 
