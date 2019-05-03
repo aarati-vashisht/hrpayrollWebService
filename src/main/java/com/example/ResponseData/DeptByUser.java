@@ -11,7 +11,10 @@ import java.util.Date;
                         @ColumnResult(name = "DepartmentName", type = String.class),
                         @ColumnResult(name = "DepartmentCode", type = String.class),
                         @ColumnResult(name = "Description", type = String.class),
-                        })
+                        @ColumnResult(name = "LocationId", type = Integer.class),
+                        @ColumnResult(name = "LocationName", type = String.class),
+
+                })
         })
 @Entity
 public class DeptByUser {
@@ -21,12 +24,16 @@ public class DeptByUser {
     String DepartmentName;
     String DepartmentCode;
     String Description;
+    int LocationId;
+    String LocationName;
 
-    public DeptByUser(int departmentID, String departmentName, String departmentCode, String description) {
+    public DeptByUser(int departmentID, String departmentName, String departmentCode, String description, int locationId, String locationName) {
         DepartmentID = departmentID;
         DepartmentName = departmentName;
         DepartmentCode = departmentCode;
         Description = description;
+        LocationId = locationId;
+        LocationName = locationName;
     }
 
     public int getDepartmentID() {
@@ -59,5 +66,21 @@ public class DeptByUser {
 
     public void setDescription(String description) {
         Description = description;
+    }
+
+    public int getLocationId() {
+        return LocationId;
+    }
+
+    public void setLocationId(int locationId) {
+        LocationId = locationId;
+    }
+
+    public String getLocationName() {
+        return LocationName;
+    }
+
+    public void setLocationName(String locationName) {
+        LocationName = locationName;
     }
 }
